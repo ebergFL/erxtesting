@@ -7,9 +7,9 @@ use the switch/case statment to randomly execute "transactions" in loadrunner or
 
         //declaration
         const int list[] = {15,15,25,45};   //Count out of the total each action should be executed
-        int i, j, k, l, listTotal, size = sizeof(list)/sizeof(i);
+        int i, j, k, l, listTotal, size = sizeof(list)/sizeof(list[0]);
 
-		for (j=listTotal=0; j<size; listTotal+=list[j++]);     //Set listTotal to the sum of all values in the list array
+        for (j=listTotal=0; j<size; listTotal+=list[j++]);     //Set listTotal to the sum of all values in the list array
         srand(time(NULL));
         i = rand() % listTotal + 1;  //Generate a number between 1 and listTotal
         for (j=k=l=0; j<size; k+=i>(l+=list[j++]));     //Set k equal to a value from 0 to (size - 1)
