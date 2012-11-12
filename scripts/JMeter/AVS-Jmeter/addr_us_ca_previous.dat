@@ -1,0 +1,20 @@
+Company,FullName,Building,AddressLine1,AddressLine2,City,State,Country,Country_code,Postcode,Locale
+GSI,GSI Commerce,935,935 First Ave.,,King of Prussia,PA,,US,19406,en_US
+GSI,GSI Commerce,630,630 Allendale Rd.,,King of Prussia,PA,,US,19406,en_US
+ATT,ATT,,111 Trumbull St,,Hartford,CT,,US,06103,en_US
+,,,100 Gansevoort St,,New York,NY,,US,10028,en_US
+,,,100 Fresh Ponds Rd.,,East Brunswick,NJ,,US,08816,en_US
+,,,100 Main St.,,Pennington,NJ,,US,08534,en_US
+,,,100 Gatehouse Ln.,,Cherry Hill,NJ,,US,08034,en_US
+,,,100 Franklin Rd,,Bechtelsville,PA,,US,19505,en_US
+,,,100 Franklin Canyon Dr.,,Beverly Hills,CA,,US,90210,en_US
+,,,16 East Basin Rd,,New Castle,CA,,US,19720,en_US
+Hilton,Hilton Montreal Bonaventure,,900 de La Gauchetiere W.,,Montreal,QC,,CA,H5A 1E4,fr_CA
+Marriott,Toronto Marriott Downtown Eaton,,525 Bay Street,,Toronto,ON,,CA,M5G 2L2 ,en_CA
+,,,1015 Burrard St.,,Vancouver,BC,,CA,V6Z 1Y5,fr_CA
+,,,5303 52 Street,,Yellowknife,NT,,CA,X1A 1V1,fr_CA
+,,,98 Geikie Street,,Jasper,AB,,CA,T0E 1E0,fr_CA
+,,,120 New Gower Street,,Saint John's,NB,,CA,A1C 6K4,en_CA
+,,,51 Keefer Court,,Hamilton,ON,,CA,L8E 4V4,en_CA
+,,,1 Moffat Pond,,Markham,ON,,CA,K0L 1X0,en_CA
+,,,4051 4th Avenue,,Whitehorse,YT,,CA,Y1A1H1,en_CA

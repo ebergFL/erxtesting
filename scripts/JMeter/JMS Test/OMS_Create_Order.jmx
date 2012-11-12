@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.2">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="OMS: Create Order Request" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1300973316000</longProp>
+        <longProp name="ThreadGroup.end_time">1300973316000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+          <stringProp name="ConstantTimer.delay">0</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+          <stringProp name="CounterConfig.start">1</stringProp>
+          <stringProp name="CounterConfig.end"></stringProp>
+          <stringProp name="CounterConfig.incr">1</stringProp>
+          <stringProp name="CounterConfig.name">increment</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <JMSSampler guiclass="JMSSamplerGui" testclass="JMSSampler" testname="OMS_Create_Order" enabled="true">
+          <stringProp name="JMSSampler.queueconnectionfactory">PRE-PROD_OMS_QueueConnectionFactory</stringProp>
+          <stringProp name="JMSSampler.SendQueue">NA.SEC.PRE-PROD.SterlingOMS.NewOrder</stringProp>
+          <stringProp name="JMSSampler.ReceiveQueue"></stringProp>
+          <boolProp name="JMSSampler.isFireAndForget">true</boolProp>
+          <boolProp name="JMSSampler.isNonPersistent">false</boolProp>
+          <boolProp name="JMSSampler.useReqMsgIdAsCorrelId">true</boolProp>
+          <stringProp name="JMSSampler.timeout">2000</stringProp>
+          <stringProp name="HTTPSamper.xml_data">&lt;Order CustomerEMailID=&quot;nayakhari@yahoo.com&quot; OrderDate=&quot;2011-08-11T16:21:15.504-04:00&quot; BillToID=&quot;111110000011298&quot; EntryType=&quot;WEB&quot; DocumentType=&quot;0001&quot; EnterpriseCode=&quot;TBL_GB&quot; SellerOrganizationCode=&quot;TBL_GB&quot; TaxExemptFlag=&quot;N&quot;&gt;
+
+  &lt;OrderLines&gt;
+
+    &lt;OrderLine FulfillmentType=&quot;SHIP_TO_HOME&quot; ScacAndService=&quot;STD_GROUND&quot; OrderedQty=&quot;2&quot; PrimeLineNo=&quot;1&quot; TransactionalLineId=&quot;ITEM-0001&quot; ConditionVariable1=&quot;ENABLED&quot;&gt;
+
+      &lt;Item ItemID=&quot;6-000906073795&quot; ItemDesc=&quot;Check out our Men&apos;s 6 Inch Premium Boot. Here it is: the original Timberland® boot. This is what helped start it all nearly forty years ago. Admittedly we&apos;ve made a few improvements over the years, but our 6 Inch boots remain just as sturdy and dependable as ever. They&apos;re crafted in premium waterproof leather with a seam-sealed construction to keep your feet dry, whatever the elements throw at you.&quot; UnitOfMeasure=&quot;EACH&quot; ProductClass=&quot;GOOD&quot;/&gt;
+
+      &lt;Extn ExtnIsFeatureLine=&quot;N&quot; ExtnColor=&quot;100&quot; ExtnSize=&quot;40&quot;/&gt;
+
+      &lt;ComputedPrice ExtendedPrice=&quot;116.67&quot;/&gt;
+
+      &lt;PersonInfoShipTo LastName=&quot;Pat&quot; FirstName=&quot;Dee&quot; AddressID=&quot;ADDRESS-0001&quot; DayPhone=&quot;6104585663&quot; AddressLine1=&quot;Unit 26, Broadgate&quot; City=&quot;Chadderton&quot; Country=&quot;GB&quot; ZipCode=&quot;BS1 6DD&quot;/&gt;
+
+      &lt;LinePriceInfo UnitPrice=&quot;116.67&quot; IsPriceLocked=&quot;Y&quot;/&gt;
+
+      
+
+      &lt;LineTaxes&gt;
+
+        &lt;LineTax ChargeCategory=&quot;Price&quot; ChargeName=&quot;&quot; Reference_1=&quot;&quot; Reference_2=&quot;&quot; Reference_3=&quot;&quot; Reference1=&quot;VAT&quot; Reference2=&quot;DESTINATION&quot; Reference3=&quot;116.67&quot; Tax=&quot;23.33&quot; TaxName=&quot;COUNTRY 78295&quot; TaxPercentage=&quot;0.2&quot; TaxableFlag=&quot;Y&quot;&gt;
+
+          &lt;Extn ExtnJurisdictionLevel=&quot;COUNTRY&quot; ExtnJurisdictionId=&quot;78295&quot; ExtnJurisdiction=&quot;UNITED KINGDOM&quot; ExtnVATRegistrationID=&quot;GB894445285&quot; ExtnImpositionType=&quot;VAT&quot; ExtnImpositionValue=&quot;VAT&quot;/&gt;
+
+        &lt;/LineTax&gt;
+
+        &lt;LineTax ChargeCategory=&quot;Shipping&quot; ChargeName=&quot;&quot; Reference_1=&quot;&quot; Reference_2=&quot;&quot; Reference_3=&quot;&quot; Reference1=&quot;VAT&quot; Reference2=&quot;DESTINATION&quot; Reference3=&quot;5.22&quot; Tax=&quot;1.04&quot; TaxName=&quot;COUNTRY 78295&quot; TaxPercentage=&quot;0.2&quot; TaxableFlag=&quot;Y&quot;&gt;
+
+          &lt;Extn ExtnJurisdictionLevel=&quot;COUNTRY&quot; ExtnJurisdictionId=&quot;78295&quot; ExtnJurisdiction=&quot;UNITED KINGDOM&quot; ExtnVATRegistrationID=&quot;GB894445285&quot; ExtnImpositionType=&quot;VAT&quot; ExtnImpositionValue=&quot;VAT&quot;/&gt;
+
+        &lt;/LineTax&gt;
+
+      &lt;/LineTaxes&gt;
+
+    &lt;/OrderLine&gt;
+
+    &lt;/OrderLines&gt;
+
+  &lt;PaymentMethods&gt;
+
+    &lt;PaymentMethod CreditCardExpDate=&quot;2014-10&quot; CreditCardName=&quot;DeePat&quot; CreditCardNo=&quot;4111112282541111&quot; CreditCardType=&quot;VC&quot; DisplayCreditCardNo=&quot;1111&quot; FirstName=&quot;Dee&quot; LastName=&quot;Pat&quot; PaymentType=&quot;CC&quot; UnlimitedCharges=&quot;Y&quot;&gt;
+
+      &lt;PaymentDetails AuthAvs=&quot;Y&quot; AuthCode=&quot;123456&quot; AuthReturnCode=&quot;AUTH_SUCCESS&quot; AuthReturnFlag=&quot;T&quot; AuthReturnMessage=&quot;AUTH_SUCCESS&quot; AuthTime=&quot;2011-07-19T16:21:16.427-04:00&quot; AuthorizationExpirationDate=&quot;2500-01-01&quot; AuthorizationID=&quot;APPROVED&quot; CVVAuthCode=&quot;M&quot; ChargeType=&quot;AUTHORIZATION&quot; ProcessedAmount=&quot;292.52&quot; RequestAmount=&quot;292.52&quot; TranType=&quot;AUTHORIZE&quot;/&gt;
+
+    &lt;/PaymentMethod&gt;
+
+  &lt;/PaymentMethods&gt;
+
+  &lt;PersonInfoBillTo LastName=&quot;Pat&quot; FirstName=&quot;Dee&quot; EMailID=&quot;nayakhari@yahoo.com&quot; AddressLine1=&quot;Unit 26, Broadgate&quot; City=&quot;Chadderton&quot; Country=&quot;GB&quot; ZipCode=&quot;BS1 6DD&quot; DayPhone=&quot;6104585663&quot;/&gt;
+
+  &lt;PriceInfo Currency=&quot;GBP&quot; EnterpriseCurrency=&quot;GBP&quot;/&gt;
+
+  &lt;Extn ExtnRetryNo=&quot;1&quot; ExtnOrderAppId=&quot;tbl-uk-store&quot; ExtnPhoneNo=&quot;6104585663&quot; ExtnIsOrderAlreadyTaxed=&quot;Y&quot; ExtnWebstoreOrderNo=&quot;11111000011225&quot; ExtnLocale=&quot;en_GB&quot; ExtnStoreID=&quot;TBLGB&quot; ExtnCustomerName=&quot;Dee Pat&quot;&gt;
+
+    &lt;GSIOrderFraudInfoList&gt;
+
+      &lt;GSIOrderFraudInfo SessionID=&quot;stJXOiBiWdxXOm5HeGjByzXOMQmz66O5VgPU4cSz&quot; ConnectionType=&quot;Keep-Alive&quot; HostName=&quot;tbleu-sectst02-edit.us.gspt.net&quot; Accept=&quot;application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*&quot; AcceptEncoding=&quot;gzip, deflate&quot; AcceptCharset=&quot; &quot; UserAgent=&quot;Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; InfoPath.2; .NET4.0E)&quot; AcceptLanguage=&quot;en-US&quot; JavascriptData=&quot;TF1;015;5;8;17562;6%2C1%2C7601%2C17514;6%2C1%2C7601%2C17514;;;;8%2C0%2C7601%2C17514;;;8%2C0%2C7100%2C0;;8%2C0%2C7601%2C17514;6%2C1%2C7601%2C17514;12%2C0%2C7601%2C17514;;8%2C0%2C7601%2C17514;6%2C1%2C7601%2C17514;;;Mozilla;Microsoft%20Internet%20Explorer;4.0%20%28compatible%3B%20MSIE%207.0%3B%20Windows%20NT%206.1%3B%20WOW64%3B%20Trident/4.0%3B%20SLCC2%3B%20.NET%20CLR%202.0.50727%3B%20.NET%20CLR%203.5.30729%3B%20.NET%20CLR%203.0.30729%3B%20Media%20Center%20PC%206.0%3B%20.NET4.0C%3B%20InfoPath.2%3B%20.NET4.0E%29;0;en-us;true;x86;true;Win32;en-us;Mozilla/4.0%20%28compatible%3B%20MSIE%207.0%3B%20Windows%20NT%206.1%3B%20WOW64%3B%20Trident/4.0%3B%20SLCC2%3B%20.NET%20CLR%202.0.50727%3B%20.NET%20CLR%203.5.30729%3B%20.NET%20CLR%203.0.30729%3B%20Media%20Center%20PC%206.0%3B%20.NET4.0C%3B%20InfoPath.2%3B%20.NET4.0E%29;en-us;windows-1252;tbleu-sectst02-edit.us.gspt.net;96;96;true;0;true;true;1311106859071;-5;Tuesday%2C%20June%2007%2C%202005%209%3A33%3A44%20PM;1280;1024;;WIN%2010%2C2%2C152%2C26;;;;;12;300;240;Tuesday%2C%20July%2019%2C%202011%204%3A20%3A59%20PM;32;1280;996;undefined;undefined;;;;;;;;;;;;;;;;;;;15;&quot; RawCookie=&quot;BrowserID_TBLEU-TBLUK-Site=UiqsFfGWlwwAAAExyNFzmUOg; BrowserIDCreationTime=1311099638216; WA_end_cap_type=_; tracking=_; WA_breadcrumb=_; WA_CVE=_; WA_CMS=_; WA_paypal=_; null-MHKsFfGWWWYAAAExGSI9OyGB=7yusFfGWd40AAAExjs1zmUP8; s_cc=true; s_nr=1311101444960; s_rdcvpc=%5B%5B&apos;confluence.tools.us.gspt.net&apos;%2C&apos;1311099653092&apos;%5D%5D; s_sq=gsicstandardv11%3D%2526pid%253Dhttps%25253A%25252F%25252Ftbleu-sectst02-edit.us.gspt.net%25252Fis-bin%25252FINTERSHOP.enfinity%25252FWFS%25252FTBLEU-TBLUK-Site%25252Fen_GB%25252F-%25252FGBP%25252FViewData-Start%25252F1940866012%25253FJumpTarget%25253DViewCheckoutMultipleAddresses-SelectMultipleShipToAddresses%252526%25253D%252526%25253D%252526%25253D%2526oid%253Dfunctionanonymous(e)%25257Bvars%25253Ds_c_il%25255B0%25255D%25252Cb%25253Ds.eh(this%25252C%252522onclick%252522)%25253Bs.lnk%25253Ds.co(this)%25253Bs.t()%25253Bs.lnk%25253D0%25253Bif(b)retur%2526oidt%253D2%2526ot%253DA%2526oi%253D944&quot; DeviceIP=&quot;172.21.241.28&quot; Referer=&quot;https://tbleu-sectst02-edit.us.gspt.net/is-bin/INTERSHOP.enfinity/WFS/TBLEU-TBLUK-Site/en_GB/-/GBP/ViewData-Start/1941691765?JumpTarget=ViewCheckoutReview-Start&amp;amp;=&amp;amp;=&amp;amp;=&quot; ReturnCustomer=&quot;N&quot; TimeSpentOnSite=&quot;00:43:46&quot; TDLOrderTS=&quot;2011-07-19T16:20:59.976-04:00&quot;/&gt;
+
+    &lt;/GSIOrderFraudInfoList&gt;
+
+  &lt;/Extn&gt;
+
+&lt;/Order&gt;
+
+
+</stringProp>
+          <stringProp name="JMSSampler.initialContextFactory">com.sonicsw.jndi.mfcontext.MFContextFactory</stringProp>
+          <stringProp name="JMSSampler.contextProviderUrl">tcp://secldtsmq01.gspt.net:2001</stringProp>
+          <elementProp name="JMSSampler.jndiProperties" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="com.sonicsw.jndi.mfcontext.domain" elementType="Argument">
+                <stringProp name="Argument.name">com.sonicsw.jndi.mfcontext.domain</stringProp>
+                <stringProp name="Argument.value">NA_SEC_LDT1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="java.naming.security.credentials" elementType="Argument">
+                <stringProp name="Argument.name">java.naming.security.credentials</stringProp>
+                <stringProp name="Argument.value">OMS</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="java.naming.security.principal" elementType="Argument">
+                <stringProp name="Argument.name">java.naming.security.principal</stringProp>
+                <stringProp name="Argument.value">OMS</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="serviceclientid" elementType="Argument">
+                <stringProp name="Argument.name">serviceclientid</stringProp>
+                <stringProp name="Argument.value">clientid</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="servicerequestid" elementType="Argument">
+                <stringProp name="Argument.name">servicerequestid</stringProp>
+                <stringProp name="Argument.value">reqid</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="TestPlan.comments">					</stringProp>
+        </JMSSampler>
+        <hashTree/>
+        <JMSSampler guiclass="JMSSamplerGui" testclass="JMSSampler" testname="OMS_TDF" enabled="true">
+          <stringProp name="JMSSampler.queueconnectionfactory">PRE-PROD_OMS_QueueConnectionFactory</stringProp>
+          <stringProp name="JMSSampler.SendQueue">NA.SEC.PRE-PROD.SterlingOMS.NewOrder</stringProp>
+          <stringProp name="JMSSampler.ReceiveQueue"></stringProp>
+          <boolProp name="JMSSampler.isFireAndForget">false</boolProp>
+          <boolProp name="JMSSampler.isNonPersistent">true</boolProp>
+          <boolProp name="JMSSampler.useReqMsgIdAsCorrelId">true</boolProp>
+          <stringProp name="JMSSampler.timeout">2000</stringProp>
+          <stringProp name="HTTPSamper.xml_data">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+
+&lt;Order BillToID=&quot;1111100000010255001&quot; CustomerEMailID=&quot;chinthapallil@gsicommerce.com&quot; DocumentType=&quot;0001&quot; EnterpriseCode=&quot;TBL_GB&quot; EntryType=&quot;WEB&quot; OrderType=&quot;&quot; SellerOrganizationCode=&quot;TBL_GB&quot; TaxExemptFlag=&quot;N&quot; TaxExemptionCertificate=&quot;973935484&quot;&gt;
+
+               &lt;Extn ExtnRetryNo=&quot;0&quot; ExtnWebstoreOrderNo=&quot;90000002&quot;&gt;
+
+                              &lt;GSIOrderFraudInfoList&gt;
+
+                                             &lt;GSIOrderFraudInfo Accept=&quot;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&quot; AcceptCharset=&quot;ISO-8859-1,utf-8;q=0.7,*;q=0.7&quot; AcceptEncoding=&quot;gzip,deflate&quot; AcceptLanguage=&quot;en-us,en;q=0.5&quot; ConnectionType=&quot;keep-alive&quot; DeviceIP=&quot;172.21.241.28&quot; HostName=&quot;tbleu-sectst02-edit.us.gspt.net&quot; JavascriptData=&quot;TF1;015;;;;;;;;;;;;;;;;;;;;;;Mozilla;Netscape;5.0%20%28Windows%3B%20en-US%29;20110319;undefined;true;Windows%20NT%206.1;true;Win32;undefined;Mozilla/5.0%20%28Windows%3B%20U%3B%20Windows%20NT%206.1%3B%20en-US%3B%20rv%3A1.9.2.16%29%20Gecko/20110319%20Firefox/3.6.16;en-US;undefined;tbleu-sectst02-edit.us.gspt.net;undefined;undefined;undefined;undefined;true;true;1310109963244;2;Tuesday%2C%20June%2007%2C%202005%209%3A33%3A44%20PM;1440;900;;10.3;7.6.9;1.6.0_26;;2010;5;-120;-180;Friday%2C%20July%2008%2C%202011%2010%3A26%3A03%20AM;24;1440;860;0;0;Adobe%20Acrobat%7CAdobe%20PDF%20Plug-In%20For%20Firefox%20and%20Netscape%2010.1.0;;;;;Shockwave%20Flash%7CShockwave%20Flash%2010.3%20r181;;;;QuickTime%20Plug-in%207.6.9%7CThe%20QuickTime%20Plugin%20allows%20you%20to%20view%20a%20wide%20variety%20of%20multimedia%20content%20in%20Web%20pages.%20For%20more%20information%2C%20visit%20the%20%3CA%20HREF%3Dhttp%3A//www.apple.com/quicktime/%3EQuickTime%3C/A%3E%20Web%20site.;;;;;;;;;15;&quot; RawCookie=&quot;BrowserID_TBLEU-TBLUK-Site=a6msFfGWYFYAAAExtcVoBAie; BrowserIDCreationTime=1310109648309; s_cc=true; s_nr=1310109835933; s_sq=gsicstandardv11%3D%2526pid%253Dhttps%25253A%25252F%25252Ftbleu-sectst02-edit.us.gspt.net%25252Fis-bin%25252FINTERSHOP.enfinity%25252FWFS%25252FTBLEU-TBLUK-Site%25252Fen_GB%25252F-%25252FGBP%25252FViewData-Start%25252F244552465%25253FJumpTarget%25253DViewCart-View%252526%25253D%252526%25253D%252526%25253D%2526oid%253Dhttps%25253A%25252F%25252Ftbleu-sectst02-edit.us.gspt.net%25252Fis-bin%25252FINTERSHOP.enfinity%25252FWFS%25252FTBLEU-TBLUK-Site%25252Fen_GB%25252F-%25252FGBP%25252FV%2526ot%253DA; null-4OasFfGWKQ8AAAEwjLIBSP0q=ytusFfGWQL0AAAEx6nBoBAih&quot; Referer=&quot;https://tbleu-sectst02-edit.us.gspt.net/is-bin/INTERSHOP.enfinity/WFS/TBLEU-TBLUK-Site/en_GB/-/GBP/ViewData-Start/244618430?JumpTarget=ViewCheckoutReview-Start&amp;amp;=&amp;amp;=&amp;amp;=&quot; ReturnCustomer=&quot;N&quot; SessionID=&quot;rLO8yjIpYvS8ynw_A20qOyeFL2hYG7HySGI_Edb4&quot; TDLOrderTS=&quot;2011-07-08T03:26:04.400-04:00&quot; TimeSpentOnSite=&quot;00:05:06&quot; UserAgent=&quot;Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16&quot;/&gt;
+
+ 
+
+                                             &lt;GSIOrderFraudInfo Accept=&quot;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&quot; AcceptCharset=&quot;ISO-8859-1,utf-8;q=0.7,*;q=0.7&quot; AcceptEncoding=&quot;gzip,deflate&quot; AcceptLanguage=&quot;en-us,en;q=0.5&quot; ConnectionType=&quot;keep-alive&quot; DeviceIP=&quot;127.0.0.1&quot; HostName=&quot;127.0.0.1&quot; JavascriptData=&quot;N/A&quot; RawCookie=&quot;AuthenticationStateToken-eXDAqP2FQtcAAAEwPQIcGGtV=eb883d2cb0d6a223e6bd4bc845b34ee6&quot; Referer=&quot;https://localhost:444/is-bin/INTERSHOP.enfinity/WFS/GSI-storeaccelerator-Site/en_US/-/USD/ViewData-Start/690162178?JumpTarget=ViewCheckoutReview-Start&amp;amp;=&amp;amp;=&amp;amp;=&quot; ReturnCustomer=&quot;N&quot; SessionID=&quot;_4Uu1E08t4Mu1ADNBROmKeX8I6tNB5ESnFby-i7v&quot; TDLOrderTS=&quot;2011-06-20T08:55:53-05:00&quot; TimeSpentOnSite=&quot;00:46:52&quot; UserAgent=&quot;Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.17) Gecko/20110420 Firefox/3.6.17&quot;/&gt;
+
+                              &lt;/GSIOrderFraudInfoList&gt;
+
+               &lt;/Extn&gt;
+
+               &lt;OrderLines&gt;
+
+                              &lt;OrderLine CarrierServiceCode=&quot;Ground&quot; OrderedQty=&quot;1.00&quot;&gt;
+
+                                             &lt;Item ItemDesc=&quot;LEGO Harry Potter Diagon Alley&quot; ItemID=&quot;721758&quot; UnitOfMeasure=&quot;EACH&quot;/&gt;
+
+                                             &lt;ItemDetails&gt;
+
+                                                            &lt;ClassificationCodes TaxProductCode=&quot;7300&quot;/&gt;
+
+                                             &lt;/ItemDetails&gt;
+
+                                             &lt;Extn ExtnColor=&quot;Black&quot; ExtnSize=&quot;10&quot;/&gt;
+
+                                             &lt;ComputedPrice ExtendedPrice=&quot;29.99&quot;/&gt;
+
+                                             &lt;PersonInfoShipTo AddressID=&quot;dest_1&quot; AddressLine1=&quot;1st Street&quot; City=&quot;Kensington&quot; Country=&quot;UK&quot; DayPhone=&quot;123-456-7890&quot; FirstName=&quot;SampleFirstName&quot; LastName=&quot;SampleLastName&quot; MiddleName=&quot;&quot; Title=&quot;Mr.&quot; ZipCode=&quot;SW3&quot;/&gt;
+
+                                             &lt;LinePriceInfo IsPriceLocked=&quot;Y&quot; UnitPrice=&quot;99.99&quot;/&gt;
+
+                                             &lt;LineCharges&gt;
+
+                                                            &lt;LineCharge ChargeCategory=&quot;Shipping&quot; ChargeName=&quot;&quot; ChargePerUnit=&quot;9.99&quot; IsDiscount=&quot;N&quot;/&gt;
+
+                                             &lt;/LineCharges&gt;
+
+                                             &lt;LineTaxes&gt;
+
+                                                            &lt;LineTax ChargeCategory=&quot;Price&quot; ChargeName=&quot;&quot; Reference1=&quot;VAT&quot; Reference2=&quot;DESTINATION&quot; Reference3=&quot;30.00&quot; Reference_1=&quot;&quot; Reference_2=&quot;&quot; Reference_3=&quot;&quot; Tax=&quot;2.56&quot; TaxName=&quot;STATE imposition&quot; TaxPercentage=&quot;0.06&quot; TaxableFlag=&quot;Y&quot;&gt;
+
+                                                                           &lt;Extn ExtnJurisdictionId=&quot;PA&quot; ExtnJurisdictionLevel=&quot;STATE&quot; ExtnVATRegistrationID=&quot;&quot;/&gt;
+
+                                                            &lt;/LineTax&gt;
+
+                                                            &lt;LineTax ChargeCategory=&quot;Shipping&quot; ChargeName=&quot;&quot; Reference1=&quot;SHIPPING&quot; Reference2=&quot;SHIP_DESTINATION&quot; Reference3=&quot;99.99&quot; Reference_1=&quot;&quot; Reference_2=&quot;&quot; Reference_3=&quot;&quot; Tax=&quot;5.99&quot; TaxName=&quot;STATE ship tax imposition&quot; TaxPercentage=&quot;0.06&quot; TaxableFlag=&quot;Y&quot;&gt;
+
+                                                                           &lt;Extn ExtnJurisdictionId=&quot;PA&quot; ExtnJurisdictionLevel=&quot;STATE&quot; ExtnVATRegistrationID=&quot;&quot;/&gt;
+
+                                                            &lt;/LineTax&gt;
+
+                                                            &lt;LineTax ChargeCategory=&quot;Shipping&quot; ChargeName=&quot;&quot; Reference1=&quot;Duty&quot; Reference2=&quot;Duty_DESTINATION&quot; Reference3=&quot;9.99&quot; Reference_1=&quot;&quot; Reference_2=&quot;&quot; Reference_3=&quot;&quot; Tax=&quot;2.99&quot; TaxName=&quot;STATE duty tax imposition&quot; TaxPercentage=&quot;0.02&quot; TaxableFlag=&quot;Y&quot;&gt;
+
+                                                                           &lt;Extn ExtnJurisdictionId=&quot;PA&quot; ExtnJurisdictionLevel=&quot;STATE&quot; ExtnVATRegistrationID=&quot;&quot;/&gt;
+
+                                                            &lt;/LineTax&gt;
+
+                                             &lt;/LineTaxes&gt;
+
+ 
+
+                              &lt;/OrderLine&gt;
+
+               &lt;/OrderLines&gt;
+
+               &lt;PaymentMethods&gt;
+
+                              &lt;PaymentMethod CreditCardExpDate=&quot;2012-11&quot; CreditCardName=&quot;Venkatesh Jawaharlal&quot; CreditCardNo=&quot;4111112282541111&quot; CreditCardType=&quot;VC&quot; DisplayCreditCardNo=&quot;1111&quot; FirstName=&quot;Young&quot; LastName=&quot;Hong&quot; PaymentType=&quot;CC&quot; UnlimitedCharges=&quot;Y&quot;&gt;
+
+                                             &lt;PaymentDetails AuthAvs=&quot;Y&quot; AuthCode=&quot;102834756&quot; AuthReturnCode=&quot;AUTH_SUCCESS&quot; AuthReturnFlag=&quot;T&quot; AuthReturnMessage=&quot;AUTH_SUCCESS&quot; AuthorizationExpirationDate=&quot;2500-01-01&quot; AuthorizationID=&quot;OK&quot; CVVAuthCode=&quot;M&quot; ChargeType=&quot;AUTHORIZATION&quot; ProcessedAmount=&quot;118.96&quot; RequestId=&quot;12345678909&quot; TranReasonCode=&quot;Lorem Ipsum Dolor Sit&quot; TranReturnMessage=&quot;0&quot; TranType=&quot;AUTHORIZE&quot;/&gt;
+
+                                             &lt;PersonInfoBillTo AddressLine1=&quot;170 Clubhouse Rd&quot; City=&quot;King of Prussia&quot; Country=&quot;US&quot; DayPhone=&quot;215-555-1212&quot; FirstName=&quot;Young&quot; LastName=&quot;Hong&quot; ZipCode=&quot;19406&quot;/&gt;
+
+                              &lt;/PaymentMethod&gt;
+
+               &lt;/PaymentMethods&gt;
+
+               &lt;PersonInfoBillTo AddressLine1=&quot;170 Clubhouse Rd&quot; City=&quot;King of Prussia&quot; Country=&quot;US&quot; DayPhone=&quot;215-555-1212&quot; EMailID=&quot;hongy@gsicommerce&quot; FirstName=&quot;Young&quot; LastName=&quot;Hong&quot; ZipCode=&quot;19406&quot;/&gt;
+
+               &lt;PriceInfo Currency=&quot;USD&quot; EnterpriseCurrency=&quot;USD&quot;/&gt;
+
+               &lt;Extn ExtnCustomerName=&quot;Young Hong&quot; ExtnIsOrderAlreadyTaxed=&quot;N&quot; ExtnIsSRItem=&quot;&quot; ExtnIsShopRunnerShippingMethod=&quot;&quot; ExtnLocale=&quot;en_US&quot; ExtnORSOCode=&quot;001&quot; ExtnORSOType=&quot;ORSO-01&quot; ExtnPhysicalCatalogCode=&quot;Jan2010&quot; ExtnSRAuthenticationToken=&quot;&quot; ExtnStoreID=&quot;TBL_GB&quot; ExtnWebstoreOrderNo=&quot;WebStoreOrderNo-01&quot;&gt;
+
+                              &lt;GSIOrderFraudInfoList&gt;
+
+                                             &lt;GSIOrderFraudInfo/&gt;
+
+                              &lt;/GSIOrderFraudInfoList&gt;
+
+               &lt;/Extn&gt;
+
+&lt;/Order&gt;
+</stringProp>
+          <stringProp name="JMSSampler.initialContextFactory">com.sonicsw.jndi.mfcontext.MFContextFactory</stringProp>
+          <stringProp name="JMSSampler.contextProviderUrl">tcp://secldtsmq01.gspt.net:2001</stringProp>
+          <elementProp name="JMSSampler.jndiProperties" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="com.sonicsw.jndi.mfcontext.domain" elementType="Argument">
+                <stringProp name="Argument.name">com.sonicsw.jndi.mfcontext.domain</stringProp>
+                <stringProp name="Argument.value">NA_SEC_LDT1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="java.naming.security.credentials" elementType="Argument">
+                <stringProp name="Argument.name">java.naming.security.credentials</stringProp>
+                <stringProp name="Argument.value">OMS</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="java.naming.security.principal" elementType="Argument">
+                <stringProp name="Argument.name">java.naming.security.principal</stringProp>
+                <stringProp name="Argument.value">OMS</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="serviceclientid" elementType="Argument">
+                <stringProp name="Argument.name">serviceclientid</stringProp>
+                <stringProp name="Argument.value">clientid</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="servicerequestid" elementType="Argument">
+                <stringProp name="Argument.name">servicerequestid</stringProp>
+                <stringProp name="Argument.value">reqid</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="TestPlan.comments">					</stringProp>
+          <boolProp name="JMSSampler.useResMsgIdAsCorrelId">true</boolProp>
+        </JMSSampler>
+        <hashTree/>
+        <JMSSampler guiclass="JMSSamplerGui" testclass="JMSSampler" testname="OMS_Create_Order" enabled="true">
+          <stringProp name="JMSSampler.queueconnectionfactory">PRE-PROD_OMS_QueueConnectionFactory</stringProp>
+          <stringProp name="JMSSampler.SendQueue">NA.SEC.PRE-PROD.SterlingOMS.NewOrder</stringProp>
+          <stringProp name="JMSSampler.ReceiveQueue"></stringProp>
+          <boolProp name="JMSSampler.isFireAndForget">true</boolProp>
+          <boolProp name="JMSSampler.isNonPersistent">false</boolProp>
+          <boolProp name="JMSSampler.useReqMsgIdAsCorrelId">true</boolProp>
+          <stringProp name="JMSSampler.timeout">2000</stringProp>
+          <stringProp name="HTTPSamper.xml_data">&lt;Order CustomerEMailID=&quot;hongy_1@gsicommerce.com&quot; BillToID=&quot;1111100000010255001&quot; OrderType=&quot;&quot; EntryType=&quot;WEB&quot; DocumentType=&quot;0001&quot; EnterpriseCode=&quot;TBL_GB&quot; SellerOrganizationCode=&quot;TBL_GB&quot; TaxExemptFlag=&quot;N&quot; TaxExemptionCertificate=&quot;973935484&quot;&gt;&lt;OrderLines&gt;&lt;OrderLine CarrierServiceCode=&quot;Ground&quot; OrderedQty=&quot;1.00&quot;&gt;&lt;Item ItemDesc=&quot;Windscreen For Mic Head&quot; ItemID=&quot;GSI-FooBar&quot; ItemWeight=&quot;0.65&quot;/&gt;&lt;ItemDetails&gt;&lt;ClassificationCodes TaxProductCode=&quot;7300&quot;/&gt;&lt;/ItemDetails&gt;&lt;Extn ExtnColor=&quot;Red&quot; ExtnSize=&quot;10&quot;/&gt;&lt;ComputedPrice ExtendedPrice=&quot;29.99&quot;/&gt;&lt;PersonInfoShipTo Title=&quot;Mr.&quot; LastName=&quot;SampleLastName&quot; FirstName=&quot;SampleFirstName&quot; MiddleName=&quot;&quot; AddressID=&quot;dest_1&quot; DayPhone=&quot;123-456-7890&quot; AddressLine1=&quot;1st Street&quot; City=&quot;Kensington&quot; Country=&quot;UK&quot; ZipCode=&quot;SW3&quot;/&gt;&lt;LinePriceInfo UnitPrice=&quot;99.99&quot; IsPriceLocked=&quot;Y&quot;/&gt;&lt;LineCharges&gt;&lt;LineCharge ChargeCategory=&quot;Shipping&quot; ChargeName=&quot;&quot; ChargePerUnit=&quot;9.99&quot; IsDiscount=&quot;N&quot;/&gt;&lt;/LineCharges&gt;&lt;LineTaxes&gt;&lt;LineTax ChargeCategory=&quot;Price&quot; ChargeName=&quot;&quot; Reference_1=&quot;&quot; Reference_2=&quot;&quot; Reference_3=&quot;&quot; Reference1=&quot;VAT&quot; Reference2=&quot;DESTINATION&quot; Reference3=&quot;30.00&quot; Tax=&quot;2.56&quot; TaxName=&quot;STATE imposition&quot; TaxPercentage=&quot;0.06&quot; TaxableFlag=&quot;Y&quot;&gt;&lt;Extn ExtnJurisdictionLevel=&quot;STATE&quot; ExtnJurisdictionId=&quot;PA&quot; ExtnVATRegistrationID=&quot;&quot;/&gt;&lt;/LineTax&gt;&lt;LineTax ChargeCategory=&quot;Shipping&quot; ChargeName=&quot;&quot; Reference_1=&quot;&quot; Reference_2=&quot;&quot; Reference_3=&quot;&quot; Reference1=&quot;SHIPPING&quot; Reference2=&quot;SHIP_DESTINATION&quot; Reference3=&quot;99.99&quot; Tax=&quot;5.99&quot; TaxName=&quot;STATE ship tax imposition&quot; TaxPercentage=&quot;0.06&quot;TaxableFlag=&quot;Y&quot;&gt;&lt;Extn ExtnJurisdictionLevel=&quot;STATE&quot; ExtnJurisdictionId=&quot;PA&quot; ExtnVATRegistrationID=&quot;&quot;/&gt;&lt;/LineTax&gt;&lt;LineTax ChargeCategory=&quot;Shipping&quot; ChargeName=&quot;&quot; Reference_1=&quot;&quot; Reference_2=&quot;&quot; Reference_3=&quot;&quot; Reference1=&quot;Duty&quot; Reference2=&quot;Duty_DESTINATION&quot; Reference3=&quot;9.99&quot; Tax=&quot;2.99&quot; TaxName=&quot;STATE duty tax imposition&quot; TaxPercentage=&quot;0.02&quot;TaxableFlag=&quot;Y&quot;&gt;&lt;Extn ExtnJurisdictionLevel=&quot;STATE&quot; ExtnJurisdictionId=&quot;PA&quot; ExtnVATRegistrationID=&quot;&quot;/&gt;&lt;/LineTax&gt;&lt;/LineTaxes&gt;&lt;Promotions&gt;&lt;Promotion PromotionId=&quot;Promo3&quot; Description=&quot;Item Discount for Loyalty&quot;&gt;&lt;Extn ExtnPromotionCode=&quot;PromoCode3&quot;/&gt;&lt;/Promotion&gt;&lt;Promotion PromotionId=&quot;Promo4&quot; Description=&quot;Item Discount for Holidays&quot;&gt;&lt;Extn ExtnPromotionCode=&quot;PromoCode4&quot;/&gt;&lt;/Promotion&gt;&lt;Promotion PromotionId=&quot;Promo1&quot; Description=&quot;Shipping Discount for Loyalty&quot;&gt;&lt;Extn ExtnPromotionCode=&quot;PromoCode1&quot;/&gt;&lt;/Promotion&gt;&lt;Promotion PromotionId=&quot;Promo2&quot; Description=&quot;Shipping Discount for Holidays&quot;&gt;&lt;Extn ExtnPromotionCode=&quot;PromoCode2&quot;/&gt;&lt;/Promotion&gt;&lt;/Promotions&gt;&lt;/OrderLine&gt;&lt;/OrderLines&gt;&lt;PaymentMethods&gt;&lt;PaymentMethod CreditCardExpDate=&quot;2012-11&quot; CreditCardName=&quot;Venkatesh Jawaharlal&quot; CreditCardNo=&quot;4111112282541111&quot; CreditCardType=&quot;VC&quot; DisplayCreditCardNo=&quot;1111&quot; FirstName=&quot;Young&quot; LastName=&quot;Hong&quot; PaymentType=&quot;CC&quot; UnlimitedCharges=&quot;Y&quot;&gt;&lt;PaymentDetails AuthAvs=&quot;Y&quot; AuthCode=&quot;102834756&quot; AuthReturnCode=&quot;AUTH_SUCCESS&quot; AuthReturnFlag=&quot;T&quot; AuthReturnMessage=&quot;AUTH_SUCCESS&quot; AuthorizationExpirationDate=&quot;2500-01-01&quot; AuthorizationID=&quot;OK&quot; CVVAuthCode=&quot;M&quot; ChargeType=&quot;AUTHORIZATION&quot;ProcessedAmount=&quot;118.96&quot; RequestId=&quot;12345678909&quot; TranType=&quot;AUTHORIZE&quot; TranReasonCode=&quot;Lorem Ipsum Dolor Sit&quot; TranReturnMessage=&quot;0&quot;/&gt;&lt;PersonInfoBillTo LastName=&quot;Hong&quot; FirstName=&quot;Young&quot; AddressLine1=&quot;170 Clubhouse Rd&quot; City=&quot;King of Prussia&quot; Country=&quot;US&quot; ZipCode=&quot;19406&quot; DayPhone=&quot;215-555-1212&quot;/&gt;&lt;/PaymentMethod&gt;&lt;/PaymentMethods&gt;&lt;PersonInfoBillTo LastName=&quot;Hong&quot; FirstName=&quot;Young&quot; EMailID=&quot;hongy@gsicommerce&quot; AddressLine1=&quot;170 Clubhouse Rd&quot; City=&quot;King of Prussia&quot; Country=&quot;US&quot; ZipCode=&quot;19406&quot; DayPhone=&quot;215-555-1212&quot;/&gt;&lt;PriceInfo Currency=&quot;USD&quot; EnterpriseCurrency=&quot;USD&quot;/&gt;&lt;Extn ExtnIsOrderAlreadyTaxed=&quot;N&quot; ExtnWebstoreOrderNo=&quot;WebStoreOrderNo-01&quot; ExtnLocale=&quot;en_US&quot; ExtnPhysicalCatalogCode=&quot;Jan2010&quot; ExtnStoreID=&quot;TBL_GB&quot; ExtnCustomerName=&quot;Young Hong&quot; ExtnORSOCode=&quot;001&quot; ExtnORSOType=&quot;ORSO-01&quot; ExtnSRAuthenticationToken=&quot;&quot;ExtnIsSRItem=&quot;&quot; ExtnIsShopRunnerShippingMethod=&quot;&quot;&gt;&lt;GSIOrderFraudInfoList&gt;&lt;GSIOrderFraudInfo/&gt;&lt;/GSIOrderFraudInfoList&gt;&lt;/Extn&gt;&lt;/Order&gt;</stringProp>
+          <stringProp name="JMSSampler.initialContextFactory">com.sonicsw.jndi.mfcontext.MFContextFactory</stringProp>
+          <stringProp name="JMSSampler.contextProviderUrl">tcp://secldtsmq01.gspt.net:2001</stringProp>
+          <elementProp name="JMSSampler.jndiProperties" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="com.sonicsw.jndi.mfcontext.domain" elementType="Argument">
+                <stringProp name="Argument.name">com.sonicsw.jndi.mfcontext.domain</stringProp>
+                <stringProp name="Argument.value">NA_SEC_LDT1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="java.naming.security.credentials" elementType="Argument">
+                <stringProp name="Argument.name">java.naming.security.credentials</stringProp>
+                <stringProp name="Argument.value">OMS</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="java.naming.security.principal" elementType="Argument">
+                <stringProp name="Argument.name">java.naming.security.principal</stringProp>
+                <stringProp name="Argument.value">OMS</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="serviceclientid" elementType="Argument">
+                <stringProp name="Argument.name">serviceclientid</stringProp>
+                <stringProp name="Argument.value">clientid</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="servicerequestid" elementType="Argument">
+                <stringProp name="Argument.name">servicerequestid</stringProp>
+                <stringProp name="Argument.value">reqid</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="TestPlan.comments">					</stringProp>
+        </JMSSampler>
+        <hashTree/>
+        <JMSSampler guiclass="JMSSamplerGui" testclass="JMSSampler" testname="OMS_Create_Order" enabled="true">
+          <stringProp name="JMSSampler.queueconnectionfactory">PRE-PROD_OMS_QueueConnectionFactory</stringProp>
+          <stringProp name="JMSSampler.SendQueue">NA.SEC.PRE-PROD.SterlingOMS.Fraud.Response</stringProp>
+          <stringProp name="JMSSampler.ReceiveQueue"></stringProp>
+          <boolProp name="JMSSampler.isFireAndForget">true</boolProp>
+          <boolProp name="JMSSampler.isNonPersistent">false</boolProp>
+          <boolProp name="JMSSampler.useReqMsgIdAsCorrelId">true</boolProp>
+          <stringProp name="JMSSampler.timeout">2000</stringProp>
+          <stringProp name="HTTPSamper.xml_data">&lt;Hello /&gt;</stringProp>
+          <stringProp name="JMSSampler.initialContextFactory">com.sonicsw.jndi.mfcontext.MFContextFactory</stringProp>
+          <stringProp name="JMSSampler.contextProviderUrl">tcp://secldtsmq01.gspt.net:2001</stringProp>
+          <elementProp name="JMSSampler.jndiProperties" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="com.sonicsw.jndi.mfcontext.domain" elementType="Argument">
+                <stringProp name="Argument.name">com.sonicsw.jndi.mfcontext.domain</stringProp>
+                <stringProp name="Argument.value">NA_SEC_LDT1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="java.naming.security.credentials" elementType="Argument">
+                <stringProp name="Argument.name">java.naming.security.credentials</stringProp>
+                <stringProp name="Argument.value">OMS</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="java.naming.security.principal" elementType="Argument">
+                <stringProp name="Argument.name">java.naming.security.principal</stringProp>
+                <stringProp name="Argument.value">OMS</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="serviceclientid" elementType="Argument">
+                <stringProp name="Argument.name">serviceclientid</stringProp>
+                <stringProp name="Argument.value">clientid</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="servicerequestid" elementType="Argument">
+                <stringProp name="Argument.name">servicerequestid</stringProp>
+                <stringProp name="Argument.value">reqid</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="TestPlan.comments">					</stringProp>
+        </JMSSampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>true</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

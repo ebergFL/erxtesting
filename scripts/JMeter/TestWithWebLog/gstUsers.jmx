@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.2">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">3</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1254922346000</longProp>
+        <longProp name="ThreadGroup.end_time">1254922346000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Cookie:</stringProp>
+              <stringProp name="Header.value">zoneid=${var2};</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">twincities.mlm.loadtest.ripple6.com</stringProp>
+          <stringProp name="HTTPSampler.port">80</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/members/homepage.aspx</stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="URL_INPUT" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">web6_moms_ex090903.log.user.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <stringProp name="shareMode">Current thread group</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">var3</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="SPLIT ENGINE" enabled="true">
+          <stringProp name="BeanShellSampler.query">import java.util.*;
+import java.lang.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+String outfile = &quot;C:/jakarta-jmeter-2.3.4/5. ripple6/5. ripple6/readOnly/temp/&quot; + ${__threadNum} + &quot;.csv&quot;;
+
+BufferedWriter out = new BufferedWriter(new FileWriter(outfile));
+
+String str =  vars.get(&quot;var3&quot;);
+int index1 = str.indexOf(&apos;:&apos;);
+
+if (index1&gt;-1){int occ = (str.split(&quot;:&quot;).length-1);
+                         int lp = occ+1;
+                         String[] str1 = str.split(&quot;:&quot;);
+                         vars.put(&quot;loop&quot;,String.valueOf(lp));
+                         vars.put(&quot;maxIteration&quot;,String.valueOf(occ));
+                         //log.error(&quot;LOOP: &quot; + lp + &quot;OCC: &quot; + occ);
+                          
+                          int i = 0;
+                          while (i &lt;= occ){ String URL = &quot;url&quot; + String.valueOf(i);
+                                                        String DUR = &quot;dur&quot; + String.valueOf(i);
+                   
+                                                        String url1 = str1[i];
+                                                        int index2 = url1.indexOf(&quot; &quot;);
+       
+                                                        //SET URL AND DURATION TIME
+                                                        if (index2&gt;-1) {String[] str2 = url1.split(&quot; &quot;);                
+                                                                                  vars.put(URL,str2[0]);  
+                                                                                  vars.put(DUR,str2[1]);
+                                                                                  //log.error(&quot;URL: &quot; + str2[0] + &quot;DUR: &quot; + str2[1]);
+		                       }
+                                                                       else{vars.put(URL,url1);  
+                                                                                 vars.put(DUR,&quot;0&quot;);
+       		                       //log.error(&quot;URL: &quot; + url1 + &quot;DUR: &quot; + &quot;0&quot;);
+		                     }
+                                
+                                                       //SET TRANSACTION NAME
+                                                       String URL2 = &quot;ur&quot; + String.valueOf(i);
+                                                       if (index2&gt;-1) {String[] str2 = url1.split(&quot; &quot;);                
+                                                                                  String UURL = str2[0];
+                                                                                  int index = UURL.indexOf(&apos;?&apos;);
+                                                                                  if (index&gt;-1) {String c = UURL.substring(0,index);
+                                                                                                          vars.put(URL2,c);
+   			                  //log.error(&quot;UR: &quot; + c);
+    			                 }
+                                                                                               else {vars.put(URL2,UURL);
+			                  //log.error(&quot;UR: &quot; + UURL);
+                                                                                                        }}
+
+                                                                       else{int index = url1.indexOf(&apos;?&apos;);
+                                                                                  if (index&gt;-1) {String c = url1.substring(0,index);
+                                                                                                          vars.put(URL2,c);
+			                  //log.error(&quot;UR: &quot; + c);
+               		                                               }
+                                                                                               else {vars.put(URL2,url1);
+			                  //log.error(&quot;UR: &quot; + url1);
+          			                }}                         	
+
+                             String iteNum = String.valueOf(i);
+                             out.write(iteNum); out.write(&quot;\n&quot;);                                
+                              i++;
+                              }}
+
+              else { vars.put(&quot;loop&quot;,&quot;1&quot;);
+                         vars.put(&quot;maxIteration&quot;,&quot;0&quot;);
+
+                           int index2 = str.indexOf(&quot; &quot;);
+                                if (index2&gt;-1) {String[] str2 = str.split(&quot; &quot;);                
+                                                         vars.put(&quot;url0&quot;,str2[0]);  
+                                                         vars.put(&quot;dur0&quot;,str2[1]);
+                                                         log.error(&quot;URL0: &quot; + str2[0] + &quot; DUR0: &quot; + str2[1]);
+	                            }
+                                                else{vars.put(&quot;url0&quot;,str);  
+                                                         vars.put(&quot;dur0&quot;,&quot;0&quot;);
+                                                          log.error(&quot;URL0: &quot; + str);
+	                           }
+
+                              // TRANACTION NAME
+                                if (index2&gt;-1) {String[] str2 = str.split(&quot; &quot;);                
+                                                          String UURL = str2[0];
+                                                          int index = UURL.indexOf(&apos;?&apos;);
+                                                                      if (index&gt;-1) {String c = UURL.substring(0,index);
+                                                                                              vars.put(&quot;ur0&quot;,c);
+			      log.error(&quot;UR0: &quot; + c);
+			     }
+                                                                      else {vars.put(&quot;ur0&quot;,UURL);
+                                                                                 log.error(&quot;UR0: &quot; + UURL);
+              		                     }}
+                                 else{int index = str.indexOf(&apos;?&apos;);
+                                             if (index&gt;-1) {String c = str.substring(0,index);
+                                                                     vars.put(&quot;ur0&quot;,c);
+                                                                     log.error(&quot;UR0: &quot; + c);
+		         }
+                                              else {vars.put(&quot;ur0&quot;,str);
+                                                        log.error(&quot;UR0: &quot; + str);
+	                          }}
+
+                             out.write(&quot;0&quot;); out.write(&quot;\n&quot;);    
+                      
+                              }
+
+
+//log.error(&quot;LOOP: &quot; + vars.get(&quot;loop&quot;));
+
+out.close(); 
+
+
+
+
+
+</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree>
+          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+            <stringProp name="DurationAssertion.duration">100000</stringProp>
+          </DurationAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">Java</stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${loop}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="iteration" enabled="false">
+            <stringProp name="CounterConfig.start">0</stringProp>
+            <stringProp name="CounterConfig.end"></stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">iteration</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">true</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="URL" enabled="false">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">url${__threadNum}.txt</stringProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">false</boolProp>
+            <stringProp name="shareMode">Current thread group</stringProp>
+            <boolProp name="stopThread">true</boolProp>
+            <stringProp name="variableNames">cookie,url</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="thinkTime threashold" enabled="true">
+            <stringProp name="maximumValue">15</stringProp>
+            <stringProp name="minimumValue">10</stringProp>
+            <stringProp name="outputFormat"></stringProp>
+            <boolProp name="perThread">false</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">rdmTime</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="thinkTime Setter" enabled="true">
+            <stringProp name="BeanShellSampler.query">String x = vars.get(&quot;rdmTime&quot;);
+int id1 = Integer.parseInt(x);
+int id2 = id1*1000;
+vars.put(&quot;thinkTime&quot;,String.valueOf(id2));
+//String y = vars.get(&quot;thinkTime&quot;);
+//log.error(${__threadNum} + &quot;YY: &quot; + y);
+
+
+
+
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="filename">temp/User${__threadNum}.csv</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="variableNames">iteration</stringProp>
+            <stringProp name="delimiter">,</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="shareMode">Current thread</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${__V(ur${iteration})}" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">twincities.mlm.loadtest.ripple6.com</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${__V(url${iteration})}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">Java</stringProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">300000</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+          </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Test Action" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">${thinkTime}</stringProp>
+          </TestAction>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>true</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>false</latency>
+              <timestamp>false</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>false</threadName>
+              <dataType>false</dataType>
+              <encoding>false</encoding>
+              <assertions>false</assertions>
+              <subresults>false</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+            </value>
+          </objProp>
+          <stringProp name="filename">C:\Documents and Settings\Administrator\Desktop\LT\readOnly\datailedReport.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

@@ -1,0 +1,2366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.2">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="Delay" elementType="Argument">
+            <stringProp name="Argument.name">Delay</stringProp>
+            <stringProp name="Argument.value">1000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="LoopCount" elementType="Argument">
+            <stringProp name="Argument.name">LoopCount</stringProp>
+            <stringProp name="Argument.value">10</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="Environment" elementType="Argument">
+            <stringProp name="Argument.name">Environment</stringProp>
+            <stringProp name="Argument.value">tsi.jboss.inr</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="mailID" elementType="Argument">
+            <stringProp name="Argument.name">mailID</stringProp>
+            <stringProp name="Argument.value">mail.inr</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <stringProp name="TestPlan.comments"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WS_001" enabled="true">
+        <longProp name="ThreadGroup.start_time">1228930018000</longProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <longProp name="ThreadGroup.end_time">1228929869000</longProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="USER GUIDE" enabled="false">
+          <stringProp name="BeanShellSampler.query">/*   
+
+SCRIPT: GIMS_MCI_LOADTEST                                                                 AUTHOR: Pratap Chinthapalli
+
+PURPOSE: Multiple members check in through this script with n seconds interval. Member ID generator genrates 
+               the member ID. Based on that number script will  process &apos;With Picture&apos;, &apos;No Picture&apos;, &apos;No Swipe&apos;, 
+               &apos;Inactive Member&apos; and &apos;Active&apos; members. If ID ends with 0 will process &apos;Inactive member&apos;, 1 will process
+               &apos;No Picture&apos;, 2 will process &apos;No Swipe&apos;. Rest will process active members. 
+
+   PRE SETTINGS
+       - Set the user id, work station and max/min limits in user parameters 
+       - Set the file paths in MEMBERID GENERATOR, Aggregate Graph and BS: RENAME LOG FILE
+       - Set the scheduler time 
+
+*/
+
+		</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+          <collectionProp name="UserParameters.names">
+            <stringProp name="-1752163770">UserID</stringProp>
+            <stringProp name="2780">WS</stringProp>
+            <stringProp name="-1291768631">Minlimit</stringProp>
+            <stringProp name="484428023">Maxlimit</stringProp>
+            <stringProp name="86275">WS_</stringProp>
+          </collectionProp>
+          <collectionProp name="UserParameters.thread_values">
+            <collectionProp name="1659362341">
+              <stringProp name="-1422449837">tester2</stringProp>
+              <stringProp name="82866645">WS001</stringProp>
+              <stringProp name="48661">115</stringProp>
+              <stringProp name="48721">133</stringProp>
+              <stringProp name="-1724701106">WS_001</stringProp>
+            </collectionProp>
+          </collectionProp>
+          <boolProp name="UserParameters.per_iteration">false</boolProp>
+        </UserParameters>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${Environment}</stringProp>
+          <stringProp name="HTTPSampler.port">80</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="LOGIN" enabled="true"/>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="/extranet/index.do" enabled="true"/>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-Login Page" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${Environment}</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/extranet/index.do</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">Java</stringProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip,deflate</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Host</stringProp>
+                    <stringProp name="Header.value">${Environment}</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Charset</stringProp>
+                    <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Keep-Alive</stringProp>
+                    <stringProp name="Header.value">300</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="/extranet/j_security_check" enabled="true"/>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-Security Check" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="j_username" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">${UserID}</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">j_username</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="j_password" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">${UserID}</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">j_password</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/extranet/j_security_check</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">Java</stringProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip,deflate</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">http://${Environment}/extranet/index.do</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Host</stringProp>
+                    <stringProp name="Header.value">${Environment}</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Charset</stringProp>
+                    <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Keep-Alive</stringProp>
+                    <stringProp name="Header.value">300</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-GIMS Home Page" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/extranet/index.do</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">Java</stringProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip,deflate</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">http://${Environment}/extranet/index.do</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Host</stringProp>
+                    <stringProp name="Header.value">${Environment}</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Charset</stringProp>
+                    <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Keep-Alive</stringProp>
+                    <stringProp name="Header.value">300</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="/temsco/preHome.do" enabled="true"/>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-Pre Home Page" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/temsco/preHome.do</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">Java</stringProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip,deflate</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">http://${Environment}/extranet/index.do</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Host</stringProp>
+                    <stringProp name="Header.value">${Environment}</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Charset</stringProp>
+                    <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Keep-Alive</stringProp>
+                    <stringProp name="Header.value">300</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-Club Operations Home Page" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/temsco/home.do</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">Java</stringProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip,deflate</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">http://${Environment}/temsco/preHome.do?</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Host</stringProp>
+                    <stringProp name="Header.value">${Environment}</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Charset</stringProp>
+                    <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Keep-Alive</stringProp>
+                    <stringProp name="Header.value">300</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="FRONT DESK" enabled="true"/>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="/temsco/viewFrontDeskCheckIn.do" enabled="true"/>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-CheckIn Page-Class Schedules" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="appCodeFrom" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">tems</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">appCodeFrom</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="wkfCodeFrom" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">tems</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">wkfCodeFrom</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="actIdFrom" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">20</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">actIdFrom</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="appCodeTo" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">tems</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">appCodeTo</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="wkfCodeTo" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">checkin</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">wkfCodeTo</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="actIdTo" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">159</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">actIdTo</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="sort" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">0</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">sort</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="offset" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">0</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">offset</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="pageSize" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">pageSize</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="from" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">menu</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">from</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="createNotice" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">Y</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">createNotice</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="roleCode" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">roleCode</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="roleDesc" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">roleDesc</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="activeUserInfoId" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">${UserID}</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">activeUserInfoId</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="assignmentId" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">assignmentId</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="requestOrigin" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">homePage</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">requestOrigin</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/temsco/viewFrontDeskCheckIn.do</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">Java</stringProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip,deflate</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">http://${Environment}/temsco/home.do</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Host</stringProp>
+                    <stringProp name="Header.value">${Environment}</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Charset</stringProp>
+                    <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Keep-Alive</stringProp>
+                    <stringProp name="Header.value">300</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-CheckIn Page-Club Information" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/temsco/viewFrontDeskCheckIn.do</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">Java</stringProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip,deflate</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">http://${Environment}/temsco/viewFrontDeskCheckIn.do</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Host</stringProp>
+                    <stringProp name="Header.value">${Environment}</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Charset</stringProp>
+                    <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">image/png,*/*;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Keep-Alive</stringProp>
+                    <stringProp name="Header.value">300</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-CheckIn Page-Member Information" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="wkfCodeFrom" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">checkin</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">wkfCodeFrom</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="wkfCodeTo" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">checkin</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">wkfCodeTo</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="actIdTo" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">70</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">actIdTo</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="appCodeTo" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">tems</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">appCodeTo</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="actIdFrom" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">159</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">actIdFrom</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                  <elementProp name="appCodeFrom" elementType="HTTPArgument">
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <stringProp name="Argument.value">tems</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">appCodeFrom</stringProp>
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/temsco/viewCheckInProfile.do</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">Java</stringProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip,deflate</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">http://${Environment}/temsco/viewFrontDeskCheckIn.do</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Host</stringProp>
+                    <stringProp name="Header.value">${Environment}</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Charset</stringProp>
+                    <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Keep-Alive</stringProp>
+                    <stringProp name="Header.value">300</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="CHECKIN PROCESS" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${LoopCount}</stringProp>
+        </LoopController>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MEMBERID GENERATOR" enabled="true"/>
+          <hashTree>
+            <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="MEMBERID GENERATOR" enabled="true">
+              <stringProp name="BeanShellSampler.query">                                                            // MemberID Generator
+import java.util.*;
+import java.lang.*;
+import java.random.*;
+
+        int rawRandomNumber;
+        String minStr =  vars.get(&quot;Minlimit&quot;);
+        String maxStr =  vars.get(&quot;Maxlimit&quot;);
+        String WS_=  vars.get(&quot;WS_&quot;);
+        int min = Integer.parseInt(minStr);
+        int max = Integer.parseInt(maxStr);
+        
+           String F1 = &quot;/home/pchinthapalli/Desktop/JMeter-Automation/TSI/CheckIn//Results/&quot; + WS_ +&quot;/MemberID.csv&quot;;
+           BufferedWriter FO1 = new BufferedWriter(new FileWriter(F1));
+           
+            rawRandomNumber = (int)(Math.random() * (max - min + 1) ) + min;
+            String memberID = String.valueOf(rawRandomNumber);
+            String lastVal = memberID.substring(memberID.length()-1);
+            FO1.write(memberID + &quot;,&quot; + lastVal);
+            FO1.close();
+  
+
+// ${count}.charAt(0) == &apos;A&apos;   for first character search
+// ${count}.charAt(${count}.length - 1) == &apos;A&apos;
+</stringProp>
+              <stringProp name="BeanShellSampler.filename"></stringProp>
+              <stringProp name="BeanShellSampler.parameters"></stringProp>
+              <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+            </BeanShellSampler>
+            <hashTree/>
+          </hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${Delay}</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MEMBER CHECKIN" enabled="true"/>
+          <hashTree>
+            <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+              <stringProp name="CounterConfig.start">1</stringProp>
+              <stringProp name="CounterConfig.end"></stringProp>
+              <stringProp name="CounterConfig.incr">1</stringProp>
+              <stringProp name="CounterConfig.name">Number</stringProp>
+              <stringProp name="CounterConfig.format"></stringProp>
+              <boolProp name="CounterConfig.per_user">false</boolProp>
+            </CounterConfig>
+            <hashTree/>
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="MemberID" enabled="true">
+              <stringProp name="delimiter">,</stringProp>
+              <stringProp name="variableNames">memberID,lastVal</stringProp>
+              <boolProp name="recycle">true</boolProp>
+              <stringProp name="filename">/home/pchinthapalli/Desktop/JMeter-Automation/TSI/CheckIn//Results/${WS_}/MemberID.csv</stringProp>
+              <stringProp name="fileEncoding"></stringProp>
+              <boolProp name="quotedData">false</boolProp>
+              <boolProp name="stopThread">false</boolProp>
+              <stringProp name="shareMode">All threads</stringProp>
+            </CSVDataSet>
+            <hashTree/>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="WITH PICTURE" enabled="true">
+              <stringProp name="IfController.condition">(${lastVal} != &apos;0&apos;) &amp;&amp; (${lastVal} != &apos;1&apos;) &amp;&amp; (${lastVal} != &apos;2&apos;)</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+            </IfController>
+            <hashTree>
+              <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="/temsco/viewCheckInProfile.do" enabled="true"/>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-Member ID:${memberID}-With Picture/viewCheckInProfile" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="appCodeFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">tems</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">appCodeFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="wkfCodeFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkin</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">wkfCodeFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actIdFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">159</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actIdFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="appCodeTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">tems</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">appCodeTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="wkfCodeTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkin</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">wkfCodeTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actIdTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">70</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actIdTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personId" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">${memberID}</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personId</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personTypeSelected" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">MEMBER</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personTypeSelected</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="companyId" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value"></stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">companyId</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain">${Environment}</stringProp>
+                  <stringProp name="HTTPSampler.port">80</stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol">http</stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/temsco/viewCheckInProfile.do</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.implementation">Java</stringProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                    <collectionProp name="HeaderManager.headers">
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Encoding</stringProp>
+                        <stringProp name="Header.value">gzip,deflate</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Referer</stringProp>
+                        <stringProp name="Header.value">http://${Environment}/temsco/viewFrontDeskCheckIn.do</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Language</stringProp>
+                        <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Host</stringProp>
+                        <stringProp name="Header.value">${Environment}</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Charset</stringProp>
+                        <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">User-Agent</stringProp>
+                        <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Content-Type</stringProp>
+                        <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept</stringProp>
+                        <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Keep-Alive</stringProp>
+                        <stringProp name="Header.value">300</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </HeaderManager>
+                  <hashTree/>
+                  <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="MemberID" enabled="true">
+                    <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                    <stringProp name="RegexExtractor.refname">MemberID</stringProp>
+                    <stringProp name="RegexExtractor.regex">&lt;input type=&quot;hidden&quot; name=&quot;personId&quot; value=&quot;(.+?)&quot; /&gt;</stringProp>
+                    <stringProp name="RegexExtractor.template">$1$</stringProp>
+                    <stringProp name="RegexExtractor.default"></stringProp>
+                    <stringProp name="RegexExtractor.match_number">1</stringProp>
+                  </RegexExtractor>
+                  <hashTree/>
+                  <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="MemberName" enabled="true">
+                    <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                    <stringProp name="RegexExtractor.refname">MemberName</stringProp>
+                    <stringProp name="RegexExtractor.regex">&lt;span class=&quot;sslabel big&quot;&gt;\s*(.+?) ,\s*(.+?)\s*&lt;/span&gt;</stringProp>
+                    <stringProp name="RegexExtractor.template">$1$$2$</stringProp>
+                    <stringProp name="RegexExtractor.default"></stringProp>
+                    <stringProp name="RegexExtractor.match_number">1</stringProp>
+                  </RegexExtractor>
+                  <hashTree/>
+                  <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BS:SaveMemberInfo" enabled="true">
+                    <stringProp name="BeanShellAssertion.query">import java.util.*;
+import java.io.*;
+
+String outfile = &quot;/home/pchinthapalli/Desktop/JMeter-Automation/TSI/CheckIn/Results/WS_001/WS001_MemberInfo.csv&quot;;
+BufferedWriter out = new BufferedWriter(new FileWriter(outfile,true));
+
+String MemberID = vars.get(&quot;MemberID&quot;);
+String LastName = vars.get(&quot;MemberName_g1&quot;);
+String FirstName = vars.get(&quot;MemberName_g2&quot;);
+String Type = &quot;With Picture&quot;;
+
+String line = vars.get(&quot;Number&quot;);
+log.error(&quot;LINE2: &quot; + line);
+
+if(line.equals(&quot;1&quot;))
+{
+out.write(&quot;SCRIPT: &quot; + &quot;,&quot; + &quot;GIMS&quot; + &quot;,&quot; + &quot;MCI&quot; + &quot;,&quot; + &quot;LOAD TEST&quot;);
+out.write(&quot;DEVELOPED BY: &quot; + &quot;,&quot; + &quot;Pratap&quot; + &quot;,&quot; + &quot;Chinthapalli&quot; + &quot;,&quot; + &quot; &quot;);
+out.write(&quot;\n&quot;);
+out.write(&quot;\n&quot;);
+out.write(&quot;MemberID&quot; + &quot;,&quot; + &quot;LastName&quot; + &quot;,&quot; + &quot;FirstName&quot; + &quot;,&quot; + &quot;Type&quot;);
+out.write(&quot;\n&quot;);
+out.write(MemberID + &quot;,&quot; + LastName + &quot;,&quot; + FirstName + &quot;,&quot; + Type);
+}
+else 
+{
+out.write(&quot;\n&quot;);
+out.write(MemberID + &quot;,&quot; + LastName + &quot;,&quot; + FirstName + &quot;,&quot; + Type);
+}
+
+
+out.close();
+</stringProp>
+                    <stringProp name="BeanShellAssertion.filename"></stringProp>
+                    <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                    <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                  </BeanShellAssertion>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="NO PICTURE" enabled="true">
+              <stringProp name="IfController.condition">${lastVal} == &apos;1&apos;</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+            </IfController>
+            <hashTree>
+              <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="No Picture" enabled="true"/>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-Member ID:${memberID}-No Picture/viewCheckInProfile" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="appCodeFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">tems</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">appCodeFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="wkfCodeFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkin</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">wkfCodeFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actIdFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">159</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actIdFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="appCodeTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">tems</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">appCodeTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="wkfCodeTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkin</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">wkfCodeTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actIdTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">70</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actIdTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personId" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">${memberID}</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personId</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personTypeSelected" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">MEMBER</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personTypeSelected</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="companyId" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value"></stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">companyId</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/temsco/viewCheckInProfile.do</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.implementation">Java</stringProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                    <collectionProp name="HeaderManager.headers">
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Encoding</stringProp>
+                        <stringProp name="Header.value">gzip,deflate</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Referer</stringProp>
+                        <stringProp name="Header.value">http://${Environment}/temsco/viewFrontDeskCheckIn.do</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Language</stringProp>
+                        <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Host</stringProp>
+                        <stringProp name="Header.value">${Environment}</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Charset</stringProp>
+                        <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">User-Agent</stringProp>
+                        <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Content-Type</stringProp>
+                        <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept</stringProp>
+                        <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Keep-Alive</stringProp>
+                        <stringProp name="Header.value">300</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </HeaderManager>
+                  <hashTree/>
+                  <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="MemberID" enabled="true">
+                    <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                    <stringProp name="RegexExtractor.refname">MemberID</stringProp>
+                    <stringProp name="RegexExtractor.regex">&lt;input type=&quot;hidden&quot; name=&quot;personId&quot; value=&quot;(.+?)&quot; /&gt;</stringProp>
+                    <stringProp name="RegexExtractor.template">$1$</stringProp>
+                    <stringProp name="RegexExtractor.default"></stringProp>
+                    <stringProp name="RegexExtractor.match_number">1</stringProp>
+                  </RegexExtractor>
+                  <hashTree/>
+                  <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="MemberName" enabled="true">
+                    <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                    <stringProp name="RegexExtractor.refname">MemberName</stringProp>
+                    <stringProp name="RegexExtractor.regex">&lt;span class=&quot;sslabel big&quot;&gt;\s*(.+?) ,\s*(.+?)\s*&lt;/span&gt;</stringProp>
+                    <stringProp name="RegexExtractor.template">$1$$2$</stringProp>
+                    <stringProp name="RegexExtractor.default"></stringProp>
+                    <stringProp name="RegexExtractor.match_number">1</stringProp>
+                  </RegexExtractor>
+                  <hashTree/>
+                  <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BS:SaveMemberInfo" enabled="true">
+                    <stringProp name="BeanShellAssertion.query">import java.util.*;
+import java.io.*;
+
+String outfile = &quot;/home/pchinthapalli/Desktop/JMeter-Automation/TSI/CheckIn/Results/WS_001/WS001_MemberInfo.csv&quot;;
+BufferedWriter out = new BufferedWriter(new FileWriter(outfile,true));
+
+String MemberID = vars.get(&quot;MemberID&quot;);
+String LastName = vars.get(&quot;MemberName_g1&quot;);
+String FirstName = vars.get(&quot;MemberName_g2&quot;);
+String Type = &quot;No Picture&quot;;
+
+String line = vars.get(&quot;Number&quot;);
+log.error(&quot;LINE2: &quot; + line);
+
+if(line.equals(&quot;1&quot;))
+{
+out.write(&quot;SCRIPT: &quot; + &quot;,&quot; + &quot;GIMS&quot; + &quot;,&quot; + &quot;MCI&quot; + &quot;,&quot; + &quot;LOAD TEST&quot;);
+out.write(&quot;DEVELOPED BY: &quot; + &quot;,&quot; + &quot;Pratap&quot; + &quot;,&quot; + &quot;Chinthapalli&quot; + &quot;,&quot; + &quot; &quot;);
+out.write(&quot;\n&quot;);
+out.write(&quot;\n&quot;);
+out.write(&quot;MemberID&quot; + &quot;,&quot; + &quot;LastName&quot; + &quot;,&quot; + &quot;FirstName&quot; + &quot;,&quot; + &quot;Type&quot;);
+out.write(&quot;\n&quot;);
+out.write(MemberID + &quot;,&quot; + LastName + &quot;,&quot; + FirstName + &quot;,&quot; + Type);
+}
+else 
+{
+out.write(&quot;\n&quot;);
+out.write(MemberID + &quot;,&quot; + LastName + &quot;,&quot; + FirstName + &quot;,&quot; + Type);
+}
+
+
+out.close();
+</stringProp>
+                    <stringProp name="BeanShellAssertion.filename"></stringProp>
+                    <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                    <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                  </BeanShellAssertion>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="NO SWIPE" enabled="true">
+              <stringProp name="IfController.condition">${lastVal} == &apos;2&apos;</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+            </IfController>
+            <hashTree>
+              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="${WS}-Member ID:${memberID}-PARENT/No Swipe" enabled="true">
+                <boolProp name="TransactionController.parent">false</boolProp>
+              </TransactionController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-Member ID:${memberID}-No Swipe/viewCheckInSearch" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="appCodeFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">tems</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">appCodeFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="wkfCodeFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkin</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">wkfCodeFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actIdFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">159</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actIdFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="appCodeTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">tems</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">appCodeTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="wkfCodeTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkin</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">wkfCodeTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actIdTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">68</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actIdTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="searchSource" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkIn</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">searchSource</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="jsFunctionName" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">submitViewProfile</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">jsFunctionName</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/temsco/viewCheckInSearch.do</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.implementation">Java</stringProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                    <collectionProp name="HeaderManager.headers">
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Encoding</stringProp>
+                        <stringProp name="Header.value">gzip,deflate</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Referer</stringProp>
+                        <stringProp name="Header.value">http://${Environment}/temsco/viewFrontDeskCheckIn.do</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Language</stringProp>
+                        <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Host</stringProp>
+                        <stringProp name="Header.value">${Environment}</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Charset</stringProp>
+                        <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">User-Agent</stringProp>
+                        <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Content-Type</stringProp>
+                        <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept</stringProp>
+                        <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Keep-Alive</stringProp>
+                        <stringProp name="Header.value">300</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </HeaderManager>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-Member ID:${memberID}-No Swipe/performCheckInSearch" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="appCodeFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">tems</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">appCodeFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="wkfCodeFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkin</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">wkfCodeFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actIdFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">68</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actIdFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="appCodeTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">tems</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">appCodeTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="wkfCodeTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkin</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">wkfCodeTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actIdTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">69</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actIdTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="jsFunctionName" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">submitViewProfile</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">jsFunctionName</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personName" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value"></stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personName</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personId" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">${memberID}</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personId</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personPhone" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value"></stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personPhone</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personBarcode" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value"></stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personBarcode</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personMemberStatus" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value"></stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personMemberStatus</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personHomeclub" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value"></stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personHomeclub</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="vendor" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value"></stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">vendor</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="sort" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">0</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">sort</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="offset" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">0</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">offset</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="pageSize" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">10</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">pageSize</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="from" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">search</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">from</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="DO_SEARCH_IND" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">Y</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">DO_SEARCH_IND</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="searchTypeSelected" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">ANY</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">searchTypeSelected</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="searchSource" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkIn</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">searchSource</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/temsco/performCheckInSearch.do</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.implementation">Java</stringProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                    <collectionProp name="HeaderManager.headers">
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Encoding</stringProp>
+                        <stringProp name="Header.value">gzip,deflate</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Referer</stringProp>
+                        <stringProp name="Header.value">http://${Environment}/temsco/viewCheckInSearch.do</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Language</stringProp>
+                        <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Host</stringProp>
+                        <stringProp name="Header.value">${Environment}</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Charset</stringProp>
+                        <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">User-Agent</stringProp>
+                        <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Content-Type</stringProp>
+                        <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept</stringProp>
+                        <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Keep-Alive</stringProp>
+                        <stringProp name="Header.value">300</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </HeaderManager>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-Member ID:${memberID}-No Swipe/viewCheckInProfile" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="appCodeFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">tems</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">appCodeFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="wkfCodeFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkin</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">wkfCodeFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actIdFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">159</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actIdFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="appCodeTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">tems</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">appCodeTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="wkfCodeTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkin</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">wkfCodeTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actIdTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">70</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actIdTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personId" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">${memberID}</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personId</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personTypeSelected" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">MEMBER</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personTypeSelected</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="companyId" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value"></stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">companyId</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/temsco/viewCheckInProfile.do</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.implementation">Java</stringProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                    <collectionProp name="HeaderManager.headers">
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Encoding</stringProp>
+                        <stringProp name="Header.value">gzip,deflate</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Referer</stringProp>
+                        <stringProp name="Header.value">http://${Environment}/temsco/viewFrontDeskCheckIn.do</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Language</stringProp>
+                        <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Host</stringProp>
+                        <stringProp name="Header.value">${Environment}</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Charset</stringProp>
+                        <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">User-Agent</stringProp>
+                        <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Content-Type</stringProp>
+                        <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept</stringProp>
+                        <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Keep-Alive</stringProp>
+                        <stringProp name="Header.value">300</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </HeaderManager>
+                  <hashTree/>
+                  <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="MemberID" enabled="true">
+                    <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                    <stringProp name="RegexExtractor.refname">MemberID</stringProp>
+                    <stringProp name="RegexExtractor.regex">&lt;input type=&quot;hidden&quot; name=&quot;personId&quot; value=&quot;(.+?)&quot; /&gt;</stringProp>
+                    <stringProp name="RegexExtractor.template">$1$</stringProp>
+                    <stringProp name="RegexExtractor.default"></stringProp>
+                    <stringProp name="RegexExtractor.match_number">1</stringProp>
+                  </RegexExtractor>
+                  <hashTree/>
+                  <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="MemberName" enabled="true">
+                    <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                    <stringProp name="RegexExtractor.refname">MemberName</stringProp>
+                    <stringProp name="RegexExtractor.regex">&lt;span class=&quot;sslabel big&quot;&gt;\s*(.+?) ,\s*(.+?)\s*&lt;/span&gt;</stringProp>
+                    <stringProp name="RegexExtractor.template">$1$$2$</stringProp>
+                    <stringProp name="RegexExtractor.default"></stringProp>
+                    <stringProp name="RegexExtractor.match_number">1</stringProp>
+                  </RegexExtractor>
+                  <hashTree/>
+                  <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BS:SaveMemberInfo" enabled="true">
+                    <stringProp name="BeanShellAssertion.query">import java.util.*;
+import java.io.*;
+
+String outfile = &quot;/home/pchinthapalli/Desktop/JMeter-Automation/TSI/CheckIn/Results/WS_001/WS001_MemberInfo.csv&quot;;
+BufferedWriter out = new BufferedWriter(new FileWriter(outfile,true));
+
+String MemberID = vars.get(&quot;MemberID&quot;);
+String LastName = vars.get(&quot;MemberName_g1&quot;);
+String FirstName = vars.get(&quot;MemberName_g2&quot;);
+String Type = &quot;No Swipe&quot;;
+
+String line = vars.get(&quot;Number&quot;);
+log.error(&quot;LINE2: &quot; + line);
+
+if(line.equals(&quot;1&quot;))
+{
+out.write(&quot;SCRIPT: &quot; + &quot;,&quot; + &quot;GIMS&quot; + &quot;,&quot; + &quot;MCI&quot; + &quot;,&quot; + &quot;LOAD TEST&quot;);
+out.write(&quot;DEVELOPED BY: &quot; + &quot;,&quot; + &quot;Pratap&quot; + &quot;,&quot; + &quot;Chinthapalli&quot; + &quot;,&quot; + &quot; &quot;);
+out.write(&quot;\n&quot;);
+out.write(&quot;\n&quot;);
+out.write(&quot;MemberID&quot; + &quot;,&quot; + &quot;LastName&quot; + &quot;,&quot; + &quot;FirstName&quot; + &quot;,&quot; + &quot;Type&quot;);
+out.write(&quot;\n&quot;);
+out.write(MemberID + &quot;,&quot; + LastName + &quot;,&quot; + FirstName + &quot;,&quot; + Type);
+}
+else 
+{
+out.write(&quot;\n&quot;);
+out.write(MemberID + &quot;,&quot; + LastName + &quot;,&quot; + FirstName + &quot;,&quot; + Type);
+}
+
+
+out.close();
+</stringProp>
+                    <stringProp name="BeanShellAssertion.filename"></stringProp>
+                    <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                    <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                  </BeanShellAssertion>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="INACTIVE MEMBER" enabled="true">
+              <stringProp name="IfController.condition">${lastVal} == &apos;0&apos;</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+            </IfController>
+            <hashTree>
+              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="${WS}-Member ID:${memberID}-PARENT/Inactive Member" enabled="true">
+                <boolProp name="TransactionController.parent">false</boolProp>
+              </TransactionController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-Member ID:${memberID}-Inactive Member/viewCheckInProfile" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="appCodeFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">tems</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">appCodeFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="wkfCodeFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkin</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">wkfCodeFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actIdFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">159</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actIdFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="appCodeTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">tems</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">appCodeTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="wkfCodeTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkin</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">wkfCodeTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actIdTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">70</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actIdTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personId" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">${memberID}</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personId</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personTypeSelected" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">MEMBER</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personTypeSelected</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="companyId" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value"></stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">companyId</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain">${Environment}</stringProp>
+                  <stringProp name="HTTPSampler.port">80</stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol">http</stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/temsco/viewCheckInProfile.do</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.implementation">Java</stringProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                    <collectionProp name="HeaderManager.headers">
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Encoding</stringProp>
+                        <stringProp name="Header.value">gzip,deflate</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Referer</stringProp>
+                        <stringProp name="Header.value">http://${Environment}/temsco/viewFrontDeskCheckIn.do</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Language</stringProp>
+                        <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Host</stringProp>
+                        <stringProp name="Header.value">${Environment}</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Charset</stringProp>
+                        <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">User-Agent</stringProp>
+                        <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Content-Type</stringProp>
+                        <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept</stringProp>
+                        <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Keep-Alive</stringProp>
+                        <stringProp name="Header.value">300</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </HeaderManager>
+                  <hashTree/>
+                  <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="MemberID" enabled="true">
+                    <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                    <stringProp name="RegexExtractor.refname">MemberID</stringProp>
+                    <stringProp name="RegexExtractor.regex">&lt;input type=&quot;hidden&quot; name=&quot;personId&quot; value=&quot;(.+?)&quot; /&gt;</stringProp>
+                    <stringProp name="RegexExtractor.template">$1$</stringProp>
+                    <stringProp name="RegexExtractor.default"></stringProp>
+                    <stringProp name="RegexExtractor.match_number">1</stringProp>
+                  </RegexExtractor>
+                  <hashTree/>
+                  <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="MemberName" enabled="true">
+                    <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                    <stringProp name="RegexExtractor.refname">MemberName</stringProp>
+                    <stringProp name="RegexExtractor.regex">&lt;span class=&quot;sslabel big&quot;&gt;\s*(.+?) ,\s*(.+?)\s*&lt;/span&gt;</stringProp>
+                    <stringProp name="RegexExtractor.template">$1$$2$</stringProp>
+                    <stringProp name="RegexExtractor.default"></stringProp>
+                    <stringProp name="RegexExtractor.match_number">1</stringProp>
+                  </RegexExtractor>
+                  <hashTree/>
+                  <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BS:SaveMemberInfo" enabled="true">
+                    <stringProp name="BeanShellAssertion.query">import java.util.*;
+import java.io.*;
+
+String outfile = &quot;/home/pchinthapalli/Desktop/JMeter-Automation/TSI/CheckIn/Results/WS_001/WS001_MemberInfo.csv&quot;;
+BufferedWriter out = new BufferedWriter(new FileWriter(outfile,true));
+
+String MemberID = vars.get(&quot;MemberID&quot;);
+String LastName = vars.get(&quot;MemberName_g1&quot;);
+String FirstName = vars.get(&quot;MemberName_g2&quot;);
+String Type = &quot;Inactive Member&quot;;
+
+String line = vars.get(&quot;Number&quot;);
+log.error(&quot;LINE2: &quot; + line);
+//log.error(&quot;MemberInfo&quot; + MemberID + &quot;,&quot; + LastName + &quot;,&quot; + FirstName + &quot;,&quot; + Type);
+
+
+if(line.equals(&quot;1&quot;))
+{
+out.write(&quot;SCRIPT: &quot; + &quot;,&quot; + &quot;GIMS&quot; + &quot;,&quot; + &quot;MCI&quot; + &quot;,&quot; + &quot;LOAD TEST&quot;);
+out.write(&quot;DEVELOPED BY: &quot; + &quot;,&quot; + &quot;Pratap&quot; + &quot;,&quot; + &quot;Chinthapalli&quot; + &quot;,&quot; + &quot; &quot;);
+out.write(&quot;\n&quot;);
+out.write(&quot;\n&quot;);
+out.write(&quot;MemberID&quot; + &quot;,&quot; + &quot;LastName&quot; + &quot;,&quot; + &quot;FirstName&quot; + &quot;,&quot; + &quot;Type&quot;);
+out.write(&quot;\n&quot;);
+out.write(MemberID + &quot;,&quot; + LastName + &quot;,&quot; + FirstName + &quot;,&quot; + Type);
+}
+else 
+{
+out.write(&quot;\n&quot;);
+out.write(MemberID + &quot;,&quot; + LastName + &quot;,&quot; + FirstName + &quot;,&quot; + Type);
+}
+
+
+out.close();
+</stringProp>
+                    <stringProp name="BeanShellAssertion.filename"></stringProp>
+                    <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                    <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                  </BeanShellAssertion>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-Member ID:${memberID}-Inactive Member/commitCheckInProfile" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="appCodeFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">tems</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">appCodeFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="wkfCodeFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkin</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">wkfCodeFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actIdFrom" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">70</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actIdFrom</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="appCodeTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">tems</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">appCodeTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="wkfCodeTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">checkin</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">wkfCodeTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actIdTo" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">71</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actIdTo</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="actionPurpose" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value"></stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">actionPurpose</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="grantedOrDenied" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">DENIED</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">grantedOrDenied</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="fieldingItemId1" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">${memberID}</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">fieldingItemId1</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="companyId" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">0</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">companyId</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personId" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">${memberID}</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personId</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="personHasCriticalAlerts" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">false</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">personHasCriticalAlerts</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                      <elementProp name="membershipStatusCode" elementType="HTTPArgument">
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <stringProp name="Argument.value">CANCEL</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">membershipStatusCode</stringProp>
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain">${Environment}</stringProp>
+                  <stringProp name="HTTPSampler.port">80</stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol">http</stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/temsco/commitCheckInProfile.do</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.implementation">Java</stringProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+                    <collectionProp name="HeaderManager.headers">
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Encoding</stringProp>
+                        <stringProp name="Header.value">gzip,deflate</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Referer</stringProp>
+                        <stringProp name="Header.value">http://${Environment}/temsco/viewCheckInProfile.do</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Language</stringProp>
+                        <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Host</stringProp>
+                        <stringProp name="Header.value">${Environment}</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept-Charset</stringProp>
+                        <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">User-Agent</stringProp>
+                        <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Content-Type</stringProp>
+                        <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept</stringProp>
+                        <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Keep-Alive</stringProp>
+                        <stringProp name="Header.value">300</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </HeaderManager>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="LOGOUT" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-Log Out" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/extranet/plogout.do</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">Java</stringProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip,deflate</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://${Environment}/temsco/viewFrontDeskCheckIn.do</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Host</stringProp>
+                  <stringProp name="Header.value">${Environment}</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept-Charset</stringProp>
+                  <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Keep-Alive</stringProp>
+                  <stringProp name="Header.value">300</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${WS}-Login Page" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/extranet/index.do</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">Java</stringProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Browser-derived headers" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip,deflate</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://${Environment}/temsco/viewFrontDeskCheckIn.do</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-us,en;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Host</stringProp>
+                  <stringProp name="Header.value">${Environment}</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept-Charset</stringProp>
+                  <stringProp name="Header.value">ISO-8859-1,utf-8;q=0.7,*;q=0.7</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Keep-Alive</stringProp>
+                  <stringProp name="Header.value">300</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Rename log file" enabled="false">
+            <stringProp name="BeanShellSampler.query">/*
+import java.util.*;
+import java.lang.*;
+
+Date date = new Date();
+String sDate = date.toString();
+
+String OrgLog = &quot;/home/pchinthapalli/Desktop/AudiManager/Comment/CommentLog.txt&quot;;
+String OrgLog1 = &quot;/home/pchinthapalli/Desktop/AudiManager/Comment/CommentLog1.txt&quot;;
+String RenameLog  = &quot;/home/pchinthapalli/Desktop/AudiManager/Comment/OldLogFiles/CommentLog&quot; +sDate+&quot;.txt&quot;;
+
+File fh = new File(OrgLog);
+File fh1 = new File(OrgLog1);
+InputStream in = new FileInputStream(fh);
+        OutputStream out = new FileOutputStream(fh1);
+    
+        // Transfer bytes from in to out
+        byte[] buf = new byte[1024];
+        int len;
+        while ((len = in.read(buf)) &gt; 0) {
+            out.write(buf, 0, len);
+        }
+        in.close();
+        out.close();
+
+if (fh1.exists( )) {
+    
+    fh1.renameTo(new  File (RenameLog));
+    System.out.println(&quot;File:&quot; + OrgLog +&quot; is Renamed to: &quot;  + RenameLog);
+    System.out.println(&quot;\n&quot;);
+
+}else { System.out.println(&quot;File:&quot; + OrgLog +&quot; Does not Exists&quot;);System.out.println(&quot;\n&quot;);} 
+*/
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>false</latency>
+              <timestamp>false</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>false</code>
+              <message>false</message>
+              <threadName>false</threadName>
+              <dataType>false</dataType>
+              <encoding>false</encoding>
+              <assertions>false</assertions>
+              <subresults>false</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+            </value>
+          </objProp>
+          <stringProp name="filename">/home/pchinthapalli/Desktop/JMeter-Automation/TSI/CheckIn/Results/WS_001/WS001_Logfile.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BS: RENAME LOG FILES" enabled="true">
+          <stringProp name="BeanShellSampler.query">// LOG FILE AND MEMBER INFO FILES ARE RENAMED WITH TIME STAMP
+
+import java.util.*;
+import java.lang.*;
+
+Date date = new Date();
+String sDate = date.toString();
+
+String WS=  vars.get(&quot;WS&quot;);
+String WS_=  vars.get(&quot;WS_&quot;);
+
+String OrgLog = &quot;/home/pchinthapalli/Desktop/JMeter-Automation/TSI/CheckIn/Results/&quot; + WS_ + &quot;/&quot; + WS + &quot;_Logfile.csv&quot;;
+String RenameLog  = &quot;/home/pchinthapalli/Desktop/JMeter-Automation/TSI/CheckIn/Results/&quot; + WS_ + &quot;/&quot; + WS + &quot;_Logfile_&quot; +sDate+&quot;.csv&quot;;
+
+    File fh = new File(OrgLog);
+    fh.renameTo(new  File (RenameLog));
+
+String OrgLog1 = &quot;/home/pchinthapalli/Desktop/JMeter-Automation/TSI/CheckIn/Results/WS_001/WS001_MemberInfo.csv&quot;;
+String RenameLog1  = &quot;/home/pchinthapalli/Desktop/JMeter-Automation/TSI/CheckIn/Results/WS_001/WS001_MemberInfo_&quot; +sDate+&quot;.csv&quot;;
+
+    File fh1 = new File(OrgLog1);
+    fh1.renameTo(new  File (RenameLog1));
+
+  //  System.out.println(&quot;File:&quot; + OrgLog +&quot; is Renamed to: &quot;  + RenameLog);
+</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.1">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="TP: AVS" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+      <collectionProp name="TestPlan.thread_groups"/>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG: AVS" enabled="true">
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1292440200000</longProp>
+        <longProp name="ThreadGroup.end_time">1292441400000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="addr_us_ca data set" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">addr_us_ca.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">All threads</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">Company,FullName,Building,AddressLine1,AddressLine2,City,State,Country,Country_code,Postcode,Locale</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <SoapSampler guiclass="SoapSamplerGui" testclass="SoapSampler" testname="AddressVerificationService - PSOAP/XML-RPC Request" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="SoapSampler.URL_DATA">http://sectstapp01.gspt.net:7831/address-validation-service/svc/addressValidationService</stringProp>
+          <stringProp name="HTTPSamper.xml_data">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
+&lt;AddressValidationRequest&gt;
+	&lt;Header&gt;
+	  &lt;Version&gt;1.0&lt;/Version&gt;
+	  &lt;Format&gt;xml&lt;/Format&gt;
+	  &lt;StoreNumber&gt;88&lt;/StoreNumber&gt;
+	  &lt;Locale&gt;en_US&lt;/Locale&gt;
+	  &lt;JobCode&gt;&lt;/JobCode&gt;
+	  &lt;MaxAddressSuggestions&gt;5&lt;/MaxAddressSuggestions&gt;
+	&lt;/Header&gt;&quot;
+	&lt;Address&gt;
+	  &lt;CompanyName&gt;${Company}&lt;/CompanyName&gt;
+                               &lt;FullName&gt;${FullName}&lt;/FullName&gt;)
+	  &lt;Building&gt;${Building}&lt;/Building&gt;
+	  &lt;AddressLine1&gt;${AddressLine1}&lt;/AddressLine1&gt;
+	  &lt;City&gt;${City}&lt;/City&gt;
+	  &lt;MainDivision&gt;${State}&lt;/MainDivision&gt;
+	  &lt;CountryISO2Code&gt;US&lt;/CountryISO2Code&gt;
+	  &lt;PostalCode&gt;${Postcode}&lt;/PostalCode&gt;
+	&lt;/Address&gt;
+&lt;/AddressValidationRequest&gt;
+
+</stringProp>
+          <stringProp name="SoapSampler.xml_data_file"></stringProp>
+          <stringProp name="SoapSampler.SOAP_ACTION"></stringProp>
+          <stringProp name="SoapSampler.SEND_SOAP_ACTION">false</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+        </SoapSampler>
+        <hashTree>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="ResultCode RegEx" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">ResultCode</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;ResultCode&gt;(.+?)&lt;/ResultCode&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="CompanyName RegEx" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">CompanyName</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;CompanyName&gt;(.+?)&lt;/CompanyName&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="FullName RegEx" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">FullName</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;FullName&gt;(.+?)&lt;/FullName&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <stringProp name="BeanShellAssertion.query">Thread current = Thread.currentThread();
+String tName = current.getName() ;
+String tName2 = (current.getName()).substring(0, 4) ;
+String tId = tName.substring(tName.lastIndexOf(&quot;-&quot;) + 1);
+int id1 = Integer.parseInt(tId);
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+import java.text.SimpleDateFormat;
+
+Date date = new Date();
+SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;MM/dd/yyyy&quot;);
+String sDate =dateFormat.format(date);
+String month=sDate.substring(0,2);
+String day=sDate.substring(3,5);
+String year=sDate.substring(6,10);
+
+String resultCode = vars.get(&quot;ResultCode&quot;);
+String companyName = vars.get(&quot;CompanyName&quot;);
+String fullName = vars.get(&quot;FullName&quot;);
+
+
+
+String outfile = &quot;Q:/PerformanceEngineering/AddrValidationService/Output_ResultCode_&quot; +  month + day + year + &quot;_user-&quot; + id1 + &quot;.csv&quot;;
+BufferedWriter out = new BufferedWriter(new FileWriter(outfile,true));
+
+out.write(resultCode + &quot;,&quot; + companyName + &quot;,&quot; + fullName);
+out.write(&quot;\n&quot;);
+             
+out.close();</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <WebServiceSampler guiclass="WebServiceSamplerGui" testclass="WebServiceSampler" testname="WebService(SOAP) Request" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">sectstapp01.gspt.net</stringProp>
+          <stringProp name="HTTPSampler.port">7831</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.path">/address-validation-service/svc/addressValidationService</stringProp>
+          <stringProp name="WebserviceSampler.wsdl_url"></stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <stringProp name="Soap.Action"></stringProp>
+          <stringProp name="HTTPSamper.xml_data">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
+&lt;AddressValidationRequest&gt;
+	&lt;Header&gt;
+	  &lt;Version&gt;1.0&lt;/Version&gt;
+	  &lt;Format&gt;xml&lt;/Format&gt;
+	  &lt;StoreNumber&gt;88&lt;/StoreNumber&gt;
+	  &lt;Locale&gt;en_US&lt;/Locale&gt;
+	  &lt;JobCode&gt;&lt;/JobCode&gt;
+	  &lt;MaxAddressSuggestions&gt;5&lt;/MaxAddressSuggestions&gt;
+	&lt;/Header&gt;&quot;
+	&lt;Address&gt;
+	  &lt;CompanyName&gt;GSI&lt;/CompanyName&gt;
+	  &lt;FullName&gt;GSI Commerce&lt;/FullName&gt;
+	  &lt;Building&gt;935&lt;/Building&gt;
+	  &lt;AddressLine1&gt;935 First Ave.&lt;/AddressLine1&gt;
+	  &lt;City&gt;King of Prussia&lt;/City&gt;
+	  &lt;MainDivision&gt;PA&lt;/MainDivision&gt;
+	  &lt;CountryISO2Code&gt;US&lt;/CountryISO2Code&gt;
+	  &lt;PostalCode&gt;19406&lt;/PostalCode&gt;
+	&lt;/Address&gt;
+&lt;/AddressValidationRequest&gt;</stringProp>
+          <stringProp name="WebServiceSampler.xml_data_file"></stringProp>
+          <stringProp name="WebServiceSampler.xml_path_loc"></stringProp>
+          <stringProp name="WebserviceSampler.timeout"></stringProp>
+          <stringProp name="WebServiceSampler.memory_cache">true</stringProp>
+          <stringProp name="WebServiceSampler.read_response">false</stringProp>
+          <stringProp name="WebServiceSampler.use_proxy">false</stringProp>
+          <stringProp name="WebServiceSampler.proxy_host"></stringProp>
+          <stringProp name="WebServiceSampler.proxy_port"></stringProp>
+        </WebServiceSampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">true</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>true</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>true</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
