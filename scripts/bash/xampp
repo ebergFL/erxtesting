@@ -1,0 +1,22 @@
+date >> xampp.out
+sudo /opt/lampp/lampp start >> xampp.out
+top
+
+date >> xampp.out
+sudo /opt/lampp/lampp stop >> xampp.out
+top
+
+date >> xampp.out
+sudo /opt/lampp/lampp restart >> xampp.out
+top
+
+Starting XAMPP for Linux 1.7.7...
+XAMPP: XAMPP-Apache is already running.
+XAMPP: XAMPP-MySQL is already running.
+XAMPP: XAMPP-ProFTPD is already running.
+XAMPP for Linux started.
+Stopping XAMPP for Linux 1.7.7...
+XAMPP: Stopping Apache with SSL...
+XAMPP: Stopping MySQL...
+XAMPP: Stopping ProFTPD...
+XAMPP stopped.
