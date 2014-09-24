@@ -1,0 +1,8 @@
+#hamachi login
+hamachi set-nick erx
+#hamachi create my-net secretpassword
+hamachi join ePerf
+hamachi go-online ePerf
+hamachi go-online ePerf
+hamachi list
+#hamachi go-offline my-net
