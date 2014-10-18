@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Apps>
+    <App DisplayName="C$&gt;" FileName="cmd" Arguments="/c start \\%Hostname%\c$" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="cmd prompt" FileName="cmd" Arguments="/T:5F /k set ERX_Name=%Name% &amp; set ERX_Hostname=%Hostname% &amp; set ERX_Port=%Port% &amp; set ERX_Username=%Username% &amp; set ERX_Password=%Password% &amp; set ERX_Domain=%Domain% &amp; set ERX_Description=%Description% &amp; set ERX_MacAddress=%MacAddress% &amp; set ERX_UserField=%UserField% &amp; set erx &amp; %UserField%" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="cmd prompt&gt;" FileName="cmd" Arguments="/T:1F /c ..\-ERX\PsExec.exe \\%Hostname% -u %Domain%\%Username% -p %Password% cmd" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="CMD" FileName="cmd" Arguments="%UserField%" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="compmgmt&gt;" FileName="cmd" Arguments="/c start %SystemRoot%\system32\compmgmt.msc /s /Computer=%Hostname%" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="Console" FileName="..\ConsolePortable\ConsolePortable.exe" Arguments=" -c ..\ConsolePortable\Data\settings\plainconsole.xml -d c:\" WaitForExit="False" TryToIntegrate="True" />
+    <App DisplayName="defrag C:&gt;" FileName="cmd" Arguments="/T:1F /k ..\-ERX\PsExec.exe \\%Hostname% -u %Username% -p %password% -s -d c:\windows\system32\defrag.exe C: -F" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="defrag c:?&gt;" FileName="cmd" Arguments="/T:1F /k ..\-ERX\PsExec.exe \\%Hostname% -u %Username% -p %Password% -s c:\windows\system32\defrag.exe C: -a -v" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="defrag done?&gt;" FileName="cmd" Arguments="/T:1F /k ..\-ERX\Tasklist.exe /FI &quot;IMAGENAME eq defrag.exe&quot; /S %Hostname% /U %Username%  /P %Password%  &amp;&amp; pause &amp;&amp; exit" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="Dev" FileName="..\-ERX\Qplink.exe" Arguments=" passthrusvrname -l %Username% -pw &quot;%Password%&quot; -auto_store_key_in_cache -C -agent -nc %Hostname%:%Port%" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="EDIT" FileName="..\Notepad++Portable\Notepad++Portable.exe" Arguments=" %UserField% " WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="editSyntax" FileName="..\Notepad++Portable\Notepad++Portable.exe" Arguments=" %UserField% " WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="ERX" FileName="cmd" Arguments="/T:1F /k cd S:\PortableApps\sqldeveloper\sqldeveloper\bin &amp; sqlplus %Username%:/%password%@merfsts @update_sku.sql" WaitForExit="False" TryToIntegrate="True" />
+    <App DisplayName="explore&gt;" FileName="cmd" Arguments="/c start \\%Hostname%" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="KiTTY" FileName="..\KiTTYPortable\KiTTYPortable.exe" Arguments="-ssh %Username%@%Hostname% -pw %Password%" WaitForExit="False" TryToIntegrate="True" />
+    <App DisplayName="Linux Monitor" FileName="cmd" Arguments="/c cd ..\-ERX &amp; start java -jar remote-linux-monitor-v1.03.jar -H %Hostname% -u %Username% -p %Password% -s 22" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="notepad" FileName="notepad.exe" Arguments=" %UserField% %Hostname%" WaitForExit="False" TryToIntegrate="True" />
+    <App DisplayName="PerfMon" FileName="cmd" Arguments="/c start perfmon %Hostname%" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="PLINK" FileName="..\PuTTYPortable\App\putty\PLINK.EXE" Arguments="%UserField%" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="SCP" FileName="..\WinSCPPortable\WinSCPPortable.exe" Arguments=" scp://%Username%:%password%@%Hostname%/ %UserField%" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="SFTP" FileName="..\FileZillaPortable\FileZillaPortable.exe" Arguments=" sftp://%Username%:%password%@%Hostname%%UserField%" WaitForExit="False" TryToIntegrate="True" />
+    <App DisplayName="SSH" FileName="..\PuTTYPortable\App\putty\PUTTY.EXE" Arguments="-ssh -A -t -l %Username% -pw %Password% %UserField% ruapehu.example.com ssh -A -t aoraki ssh -A %Hostname%" WaitForExit="False" TryToIntegrate="True" />
+    <App DisplayName="Multi-hop SSH?" FileName="..\PuTTYPortable\App\putty\PUTTY.EXE" Arguments="-ssh %Hostname% -l %Username% -pw %Password% %UserField%" WaitForExit="False" TryToIntegrate="True" />
+    <App DisplayName="SysInfo&gt;" FileName="cmd" Arguments="/c start msinfo32 /computer %Hostname%" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="Tasklist&gt;" FileName="cmd" Arguments="/T:1F /k Tasklist.exe /S %Hostname% /U %Username%  /P %Password% &amp;&amp; pause &amp;&amp; exit" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="tracert&gt;" FileName="cmd" Arguments="/T:1F /k tracert %HostName% &amp;&amp; pause &amp;&amp; exit" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="Windows Computer Manager" FileName="C:\windows\system32\compmgmt.msc" Arguments=" /Computer=%Hostname%" WaitForExit="False" TryToIntegrate="True" />
+    <App DisplayName="Wlrun?&gt;" FileName="cmd" Arguments="/T:1F /k ..\-ERX\Tasklist.exe /FI &quot;IMAGENAME eq Wlrun.exe&quot; /S %Hostname% /U %Username%  /P %Password%  &amp;&amp; pause &amp;&amp; exit" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="Cygwin" FileName="..\CygwinPortable\App\Cygwin\bin\mintty.exe" Arguments="-" WaitForExit="False" TryToIntegrate="True" />
+    <App DisplayName="Multi-hop Plink" FileName="..\PuTTYPortable\App\putty\PLINK.EXE" Arguments="-ssh -t -pw &quot;%Password%&quot; %Username%@passthrusvrname &quot;ssh -X %Username%@%Hostname%&quot;" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="viewer" FileName="..\-LTFViewr\LTFViewr5u.exe" Arguments="%UserField%" WaitForExit="False" TryToIntegrate="False" />
+    <App DisplayName="SCP su" FileName="..\WinSCPPortable\WinSCPPortable.exe" Arguments=" scp://%Username%:%password%@%Hostname%/" WaitForExit="False" TryToIntegrate="False" />
+</Apps>
