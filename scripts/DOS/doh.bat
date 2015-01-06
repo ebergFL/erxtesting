@@ -25,4 +25,4 @@
 :::           /            \              \   \
 :::
 
-for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A)
+for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
