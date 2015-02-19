@@ -1,0 +1,11 @@
+COOKIES = InputBox("How many cookies would you like??")
+
+For i = 1 to CInt(COOKIES)
+	Set IE = CreateObject("InternetExplorer.Application")
+	IE.visible = true
+	IE.navigate "http://marianina.com/blog/wp-content/uploads/2007/08/Cookies.jpg"
+	If i <> CInt(COOKIES) Then
+		Msgbox "You should know better...  I'm not giving you control back yet."
+		Msgbox CStr(CInt(COOKIES) - i)&" more times to go."
+	End If
+Next
