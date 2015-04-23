@@ -1,0 +1,130 @@
+Requirments:
+http://www.TiddlyTools.com/#MatchTagsPlugin
+
+Tiddlers
+| <<list filter "[tag[!journal&&!task&&!project&&!excludeLists]] [sort[-created]]]" template: [[titleModCreatedTemplate]]>>|
+
+no tags tiddlers
+<<list filter [tag[-]]>>
+
+contact
+<<list filter "[tag[contact]] [sort[tags]] [limit[15]]">>
+
+environment
+<<list filter "[tag[environment]] [sort[title]] [limit[50]]">>
+
+performance
+<<list filter "[tag[performance]] [sort[title]] [limit[50]]">>
+
+procedures
+<<list filter "[tag[procedures]] [sort[title]] [limit[50]]">>
+
+research
+<<list filter "[tag[research]] [sort[title]] [limit[50]]">>
+
+Dashboards
+<<list filter "[tag[dashboard]] [sort[title]] [limit[15]]">>
+
+Completed
+<<list filter "[tag[completed]] [sort[title]] [limit[15]]">>
+
+Tasks
+!open
+<<list filter "[tag[!completed&&task]] [sort[-created]] [limit[15]]">>
+!completed
+<<list filter "[tag[completed&&task]] [sort[-created]] [limit[5]]">>
+
+<<tiddler [[taskPriorityKey]]>>
+
+reference
+<<list filter "[tag[reference]] [sort[title]] [limit[15]]">>
+
+Project-Siemens-Retail
+!Siemens Docs
+<<list filter "[tag[siemens&&!task]] [sort[title]] [limit[15]]">>
+
+Example_Project
+<<tiddler [[projectTemplate]] with: "Example_Project">>
+
+!Siemens Tasks
+not completed
+<<list filter "[tag[!completed&&task&&siemens]] [sort[title]] [limit[15]]">>
+completed
+<<list filter "[tag[completed&&task&&siemens]] [sort[title]] [limit[15]]">>
+not siemens
+<<list filter "[tag[!siemens&&task]] [sort[title]] [limit[15]]">>
+
+Journals
+[[-Journals]]
+<<list filter "[tag[journal]] [sort[-created]] [limit[25]]">>
+
+-Journals
+[[Journals]]
+<<list filter "[tag[journal]] [sort[created]] [limit[50]]">>
+
+Projects
+<<list filter "[tag[project]] [sort[title]] [limit[15]]">>
+
+quick reference
+<<tabs
+	txtFavouriteMacros
+	recentTiddlers
+	"Information on the tag macro..."
+	recentTiddlers
+	performance
+	"Information on the tag macro..."
+	performance
+	procedures
+	"Information on the tag macro..."
+	procedures
+	research
+	"Information on the tag macro..."
+	research
+	environment
+	"Information on the tag macro..."
+	environment
+	reference
+	"Information on the tag macro..."
+	reference
+	Dashboards
+	"Information on the tag macro..."
+	Dashboards
+>>
+
+calendar
+[[calendar|https://www.google.com/calendar/embed?mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=erichberg%40gmail.com&amp;color=%232952A3&amp;ctz=America%2FNew_York" style=" border:solid 1px #777 " width="100%" height="400" frameborder="0" scrolling="no"]]
+<html>
+  <div align="center">
+    <iframe src=
+      "https://www.google.com/calendar/embed?mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=erichberg%40gmail.com&amp;color=%232952A3&amp;ctz=America%2FNew_York" style=" border:solid 1px #777 " width="100%" height="400" frameborder="0" scrolling="no""
+      frameborder="0" width="100%" height="700">
+    </iframe>
+  </div>
+</html>
+
+work
+<<tabs
+	txtFavouriteMacros
+	calendar
+	"Information on the tag macro..."
+	calendar
+	Projects
+	"Information on the tag macro..."
+	Projects
+	Tasks
+	"Information on the tag macro..."
+	Tasks
+	Completed
+	"Information on the tag macro..."
+	Completed
+	Journals
+	"Information on the tag macro..."
+	Journals
+	-Journals
+	"Information on the tag macro..."
+	-Journals
+	download
+	"Information on the tag macro..."
+	googleDrivePublic
+>>
+
