@@ -1,0 +1,129 @@
+<!DOCTYPE html><!-- HTML 5 -->
+<html dir="ltr" lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="pingback" href="http://www.getteamtasks.com/xmlrpc.php" />
+	
+	<title>getteamtasks.com - </title>
+
+<link rel="alternate" type="application/rss+xml" title="getteamtasks.com &raquo; Feed" href="http://www.getteamtasks.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="getteamtasks.com &raquo; Comments Feed" href="http://www.getteamtasks.com/comments/feed/" />
+<link rel='stylesheet' id='contact-form-7-css'  href='http://www.getteamtasks.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=3.2.1' type='text/css' media='all' />
+<link rel='stylesheet' id='zee_stylesheet-css'  href='http://www.getteamtasks.com/wp-content/themes/zeebusiness/style.css?ver=3.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='zee_color_scheme-css'  href='http://www.getteamtasks.com/wp-content/themes/zeebusiness/includes/css/colorschemes/darkgreen.css?ver=3.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='themezee_default_font-css'  href='http://fonts.googleapis.com/css?family=Nobile&#038;ver=3.4.2' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.getteamtasks.com/wp-includes/js/jquery/jquery.js?ver=1.7.2'></script>
+<script type='text/javascript' src='http://www.getteamtasks.com/wp-content/themes/zeebusiness/includes/js/jquery.cycle.all.min.js?ver=3.4.2'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.getteamtasks.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.getteamtasks.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.4.2" />
+<script type="text/javascript">
+				//<![CDATA[
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).slideDown(350);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+						
+						$('#topnav ul').css({display: 'none'}); // Opera Fix
+						$('#topnav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).slideDown(350);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//]]>
+				</script><style type="text/css"></style><style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #eee; }
+</style>
+</head>
+
+<body class="home blog custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+							</div>
+			
+		</div>
+	</div>
+	
+			<div id="custom_header">
+			<img src="http://www.getteamtasks.com/wp-content/uploads/2012/11/getteamtasks.jpg" />
+		</div>
+		
+	<div id="navi">
+		<ul id="nav" class="menu"><li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-19"><a href="/">Home</a></li>
+<li id="menu-item-21" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-21"><a rel="nofollow" href="http://www.getteamtasks.com/about/">About</a></li>
+<li id="menu-item-34" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-34"><a href="http://www.getteamtasks.com/helpful-articles/">Helpful Articles</a></li>
+<li id="menu-item-35" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35"><a href="http://www.getteamtasks.com/news/">News</a></li>
+<li id="menu-item-36" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-36"><a href="http://www.getteamtasks.com/productivity-at-work/">Productivity at Work</a></li>
+<li id="menu-item-37" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-37"><a href="http://www.getteamtasks.com/tips/">Tips</a></li>
+<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a rel="nofollow" href="http://www.getteamtasks.com/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-20" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20"><a rel="nofollow" href="http://www.getteamtasks.com/contact/">Contact</a></li>
+</ul>	</div>
+	<div class="clear"></div>
+	
+	<div id="wrap">
+		<div id="content">
+		
+				 
+				
+			<div id="post-38" class="post-38 post type-post status-publish format-standard hentry category-news">
+			
+				<h2 class="post-title"><a href="http://www.getteamtasks.com/welcome/" rel="bookmark">Welcome</a></h2>
+				
+				<div class="postmeta">	<a href="http://www.getteamtasks.com/welcome/">November 12, 2012</a> / 
+<a href="http://www.getteamtasks.com/author/webmaster/" title="Posts by webmaster" rel="author">webmaster</a> / <a href="http://www.getteamtasks.com/welcome/#respond" title="Comment on Welcome">No comments</a></div>
+				
+				<div class="entry">
+					<a href="http://www.getteamtasks.com/welcome/" rel="bookmark"></a>
+					<p>Let&#8217;s get productive!</p>
+					<div class="clear"></div>
+									</div>
+				
+				<div class="postinfo">Category: <a href="http://www.getteamtasks.com/news/" title="View all posts in News" rel="category tag">News</a> / </div>
+
+			</div>			
+							<div class="more_posts">
+					<span class="post_links"> &nbsp; </span>
+				</div>
+			
+					
+		</div>
+		
+	<div id="sidebar">
+	<ul>
+
+		<li id="recent-posts-3" class="widget widget_recent_entries">		<h2 class="widgettitle">Recent posts</h2>
+		<ul>
+				<li><a href="http://www.getteamtasks.com/welcome/" title="Welcome">Welcome</a></li>
+				</ul>
+		</li>
+	
+	</ul>
+</div>	<div class="clear"></div>
+	</div>
+				
+		<div id="footer">
+			Place your Footer Content here			<div id="foot_navi">
+							</div>
+		</div>
+		<div class="clear"></div>
+</div>
+	<div class="credit_link">	<a href="http://themezee.com/">Wordpress Theme by ThemeZee</a>
+</div>
+	<script type='text/javascript' src='http://www.getteamtasks.com/wp-content/plugins/contact-form-7/includes/js/jquery.form.js?ver=3.14'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/www.getteamtasks.com\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.getteamtasks.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=3.2.1'></script>
+</body>
+</html>	
