@@ -1,0 +1,62 @@
+contactTemplate
+''$1 $2'' -- //$3//
+[[$4|mailto:$4]]
+''phone'' $5 $6
+''address'' [[$8|https://www.google.com/maps/place/$8]]
+----
+$9
+----
+template excludeLists
+
+eberg
+<<tiddler [[contactTemplate]] 
+	with:
+		"Eric" 
+		"Berg" 
+		"chief cook and bottle washer" 
+		"eric.berg@usa.net" 
+		"347-469-1269" 
+		"6" 
+		"7" 
+		"123 Easy St, Main, PA 12345" 
+		"Google [[chat|gtalk:chat?jid=#erichberg@gmail.com#]] or [[talk|gtalk:call?jid=#erichberg@gmail.com#]]
+/%
+Secrets
+%/
+
+>>
+/%
+name first $1 last $2
+role $3
+email $4
+phone mobile $5 desk $6 
+notes $9
+%/
+contact
+
+iframeTemplate
+[[open document|$1]] <html><a id="top$1">top</a></html>
+<html>
+  <div align="center">
+    <iframe src= "$1" frameborder="0" width="$2%" height="$3">
+    </iframe>
+  </div>
+</html>
+<html><a href="#top$1">got to top</a></html>
+template excludeLists
+
+!top of iframe
+<html>
+  <div align="center">
+    <iframe src=
+      "data:text/html, <html contenteditable> <b>Clip Board</b><br>Hello world"
+      frameborder="0" width="100%" height="700">
+    </iframe>
+  </div>
+</html>
+!bottom  of iframe
+
+<<tiddler [[iframeTemplate]] with: "file:///D:/Data/notes/install%20doc/notes" "100" "200">>
+
+<html><a href="#top">Visit the top of the page</a></html>
+
