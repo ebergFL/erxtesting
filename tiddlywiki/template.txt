@@ -42,21 +42,5 @@ iframeTemplate
     </iframe>
   </div>
 </html>
-<html><a href="#top$1">got to top</a></html>
+<html><a href="#top$1">got to top</a></html>/% Usage: <<tiddler [[iframeTemplate]] with: "file:///D:/Data/notes/install%20doc/notes" "100" "200">> %/
 template excludeLists
-
-!top of iframe
-<html>
-  <div align="center">
-    <iframe src=
-      "data:text/html, <html contenteditable> <b>Clip Board</b><br>Hello world"
-      frameborder="0" width="100%" height="700">
-    </iframe>
-  </div>
-</html>
-!bottom  of iframe
-
-<<tiddler [[iframeTemplate]] with: "file:///D:/Data/notes/install%20doc/notes" "100" "200">>
-
-<html><a href="#top">Visit the top of the page</a></html>
-
