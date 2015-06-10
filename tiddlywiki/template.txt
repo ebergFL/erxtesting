@@ -1,46 +1,131 @@
-contactTemplate
-''$1 $2'' -- //$3//
+<div title="contactTemplate" modifier="eberg" created="201405081904" modified="201405091909" tags="template excludeLists">
+<pre>''$1 $2'' -- //$3//
 [[$4|mailto:$4]]
 ''phone'' $5 $6
 ''address'' [[$8|https://www.google.com/maps/place/$8]]
 ----
 $9
-----
-template excludeLists
-
-eberg
-<<tiddler [[contactTemplate]] 
+----</pre>
+</div>
+<div title="eberg" creator="eberg" modifier="eberg" created="201303221921" modified="201502200442" tags="contact" server.page.revision="201310231915" server.host="file:///H:/My Documents/Siemens ERX.wiki" server.type="file" changecount="3">
+<pre>&lt;&lt;tiddler [[contactTemplate]] 
 	with:
-		"Eric" 
-		"Berg" 
-		"chief cook and bottle washer" 
-		"eric.berg@usa.net" 
-		"347-469-1269" 
-		"6" 
-		"7" 
-		"123 Easy St, Main, PA 12345" 
-		"Google [[chat|gtalk:chat?jid=#erichberg@gmail.com#]] or [[talk|gtalk:call?jid=#erichberg@gmail.com#]]
+		&quot;Eric&quot; 
+		&quot;Berg&quot; 
+		&quot;chief cook and bottle washer&quot; 
+		&quot;eric.berg@usa.net&quot; 
+		&quot;347-469-1269&quot; 
+		&quot;6&quot; 
+		&quot;7&quot; 
+		&quot;1889 Alamingo Dr, Quakertown, PA 18951&quot; 
+		&quot;Google [[chat|gtalk:chat?jid=#erichberg@gmail.com#]] or [[talk|gtalk:call?jid=#erichberg@gmail.com#]]
 /%
-Secrets
+Secrests
 %/
-
->>
-/%
+/% Usage:
 name first $1 last $2
 role $3
 email $4
 phone mobile $5 desk $6 
 notes $9
-%/
-contact
+%/</pre>
+</div>
+<div title="iframeTemplate" modifier="eberg" created="201405210433" modified="201405211759" tags="template excludeLists">
+<pre>[[open document|$1]] &lt;html&gt;&lt;a id=&quot;top$1&quot;&gt;top&lt;/a&gt;&lt;/html&gt;
+&lt;html&gt;
+  &lt;div align=&quot;center&quot;&gt;
+    &lt;iframe src= &quot;$1&quot; frameborder=&quot;0&quot; width=&quot;$2%&quot; height=&quot;$3&quot;&gt;
+    &lt;/iframe&gt;
+  &lt;/div&gt;
+&lt;/html&gt;
+&lt;html&gt;&lt;a href=&quot;#top$1&quot;&gt;got to top&lt;/a&gt;&lt;/html&gt;/% Usage: <<tiddler [[iframeTemplate]] with: "file:///D:/Data/notes/install%20doc/notes" "100" "200">> %/</pre>
+</div>
+<div title="projectTemplate" modifier="eberg" created="201405062128" modified="201405151800" tags="template excludeLists">
+<pre>!$1 Project Docs
+&lt;&lt;list filter &quot;[tag[$1&amp;&amp;!task]] [sort[title]] [limit[15]]&quot;&gt;&gt;
 
-iframeTemplate
-[[open document|$1]] <html><a id="top$1">top</a></html>
-<html>
-  <div align="center">
-    <iframe src= "$1" frameborder="0" width="$2%" height="$3">
-    </iframe>
-  </div>
-</html>
-<html><a href="#top$1">got to top</a></html>/% Usage: <<tiddler [[iframeTemplate]] with: "file:///D:/Data/notes/install%20doc/notes" "100" "200">> %/
-template excludeLists
+!$1 tasks
+not completed
+&lt;&lt;list filter &quot;[tag[!completed&amp;&amp;task&amp;&amp;$1]] [sort[title]] [limit[15]]&quot;&gt;&gt;
+completed
+&lt;&lt;list filter &quot;[tag[completed&amp;&amp;task&amp;&amp;$1]] [sort[title]] [limit[15]]&quot;&gt;&gt;
+open and not $1
+&lt;&lt;list filter &quot;[tag[!completed&amp;&amp;!$1&amp;&amp;task]] [sort[title]] [limit[15]]&quot;&gt;&gt;
+&lt;&lt;tiddler [[taskPriorityKey]]&gt;&gt;</pre>
+</div>
+<div title="sample formatting" modifier="eberg" created="201405141429" modified="201405210453" tags="template +erx">
+<pre>&lt;html&gt;&lt;a id=&quot;top&quot;&gt;Top&lt;/a&gt;&lt;/html&gt;
+|bgcolor(#4c8bff):@@color:black;''MS-DOS''@@|
+|bgcolor(#000000):@@color:white;C:\&gt;DIR /B&lt;br&gt;myfile.txt&lt;br&gt; &lt;br&gt;@@|
+
+|bgcolor(#4c8bff):@@color(black):''BASH''@@|
+|bgcolor(#000000):@@color:white;[root@local ~]$ @@@@color:#00FF00;█&lt;br&gt; &lt;br&gt;@@|
+
+|bgcolor(#000000):@@color:white;[root@local ~]$ @@@@color:#00FF00;█&lt;br&gt; &lt;br&gt;@@|
+
+!iframe example
+{{{
+!top of iframe
+&lt;html&gt;
+  &lt;div align=&quot;center&quot;&gt;
+    &lt;iframe src=
+      &quot;data:text/html, &lt;html contenteditable&gt; &lt;b&gt;Clip Board&lt;/b&gt;&lt;br&gt;Hello world&quot;
+      frameborder=&quot;0&quot; width=&quot;100%&quot; height=&quot;700&quot;&gt;
+    &lt;/iframe&gt;
+  &lt;/div&gt;
+&lt;/html&gt;
+!bottom  of iframe
+}}}
+!top of iframe
+&lt;html&gt;
+  &lt;div align=&quot;center&quot;&gt;
+    &lt;iframe src=
+      &quot;data:text/html, &lt;html contenteditable&gt; &lt;b&gt;Clip Board&lt;/b&gt;&lt;br&gt;Hello world&quot;
+      frameborder=&quot;0&quot; width=&quot;100%&quot; height=&quot;700&quot;&gt;
+    &lt;/iframe&gt;
+  &lt;/div&gt;
+&lt;/html&gt;
+!bottom  of iframe
+
+&lt;&lt;tiddler [[iframeTemplate]] with: &quot;file:///D:/Data/notes/install%20doc/notes&quot; &quot;100&quot; &quot;200&quot;&gt;&gt;
+
+&lt;html&gt;&lt;a href=&quot;#top&quot;&gt;Visit the top of the page&lt;/a&gt;&lt;/html&gt;</pre>
+</div>
+<div title="taskPriorityKey" modifier="eberg" created="201405062122" modified="201405151801" tags="+erx">
+<pre>!Task Priority Key
+~1  Needs to be done
+~2  Want to be done
+~3  Nice to have done</pre>
+</div>
+<div title="taskTemplate" modifier="eberg" created="201405062036" modified="201405081757" tags="template excludeLists">
+<pre>!&lt;&lt;view title link&gt;&gt; by &lt;&lt;view modified date&gt;&gt;
+&lt;&lt;view text wikified&gt;&gt;</pre>
+</div>
+<div title="titleModCreatedTemplate" modifier="eberg" created="201405091915" modified="201405092008" tags="template excludeLists">
+<pre>&lt;&lt;view title link&gt;&gt;, &lt;&lt;view modified date&gt;&gt; (&lt;&lt;view created date&gt;&gt;)</pre>
+</div>
+<div title="titleModTextTemplate" modifier="eberg" created="201405091915" tags="template excludeLists">
+<pre>!&lt;&lt;view title link&gt;&gt; by &lt;&lt;view modified date&gt;&gt;
+&lt;&lt;view text wikified&gt;&gt;</pre>
+</div>
+<div title="Tiddlers" modifier="eberg" created="201403131847" modified="201405092013" tags="dashboard +erx">
+<pre>| &lt;&lt;list filter &quot;[tag[!journal&amp;&amp;!task&amp;&amp;!project&amp;&amp;!excludeLists]] [sort[-created]]]&quot; template: [[titleModCreatedTemplate]]&gt;&gt;|</pre>
+</div>
+<div title="-Journals" modifier="eberg" created="201308271854" modified="201405081841" tags="excludeLists" server.page.revision="201308271854" server.host="file:///H:/My Documents/Siemens ERX.wiki" server.type="file">
+<pre>[[Journals]]
+&lt;&lt;list filter &quot;[tag[journal]] [sort[created]] [limit[50]]&quot;&gt;&gt;</pre>
+</div>
+<div title="MainMenu" creator="YourName" modifier="eberg" created="201310221626" modified="201405231529" tags="+erx" server.page.revision="201310221637" server.host="file:///H:/My Documents/Siemens ERX.wiki" server.type="file">
+<pre>&lt;&lt;list filter &quot;[tag[menu&amp;&amp;top]] [sort[tags]] [limit[15]]&quot;&gt;&gt;
+----
+&lt;&lt;list filter &quot;[tag[menu&amp;&amp;middle]] [sort[tags]] [limit[15]]&quot;&gt;&gt;
+----
+&lt;&lt;list filter &quot;[tag[menu&amp;&amp;!(top||middle)]] [sort[tags]] [limit[15]]&quot;&gt;&gt;
+refreshed &lt;&lt;today&gt;&gt;
+[[MainMenu]]
+&lt;html&gt;&lt;div align=&quot;left&quot;&gt;
+&lt;FORM name=form1&gt;
+&lt;INPUT type=file name=cmuds&gt;
+&lt;INPUT onclick=&quot;whatFile()&quot; type=button value=OpenFile name=button&gt;
+&lt;/FORM&gt;&lt;/div&gt;&lt;br&gt;&lt;/html&gt;</pre>
+</div>
